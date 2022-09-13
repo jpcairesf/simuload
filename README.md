@@ -5,6 +5,7 @@ Simuload é um projeto para criação de um simulador de curvas de cargas elétr
 Execute os seguintes comandos
 ```python
     python -m venv .venv
+    .venv/Scripts/Activate.ps1
     pip install -r requirements.txt
 
 ```

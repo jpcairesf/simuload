@@ -4,8 +4,8 @@ Simuload é um projeto para criação de um simulador de curvas de cargas elétr
 ## Setup
 Execute os seguintes comandos (Windows 10)
 ```python
-    python -m venv .venv
-    .venv/Scripts/activate
-    pip install -r requirements.txt
+    >> python -m venv .venv
+    >> .venv/Scripts/activate
+    (.venv)>> pip install -r requirements.txt
 
 ```

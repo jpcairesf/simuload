@@ -27,17 +27,14 @@ def test_equipamento_propriedades():
     equip.nome = 'Lampada Incandescente'
     equip.potencia = 60
     equip.fator_potencia = 0.95
-    equip.uso_diario = '0:2,10:15'
+    equip.uso_diario = '0:2,7:9,10:15,23'
     equip.quantidade = 5
     
     assert equip.nome == 'Lampada Incandescente'
     assert equip.potencia == 60
     assert equip.fator_potencia == 0.95
-    print(equip.uso_diario)
-    print(np.array([1,1,0,0,0,0,0,0,
-                    0,0,1,1,1,1,1,0,
-                    0,0,0,0,0,0,0,0]).reshape((24)))
-    assert np.array_equal(equip.uso_diario, np.array([1,1,0,0,0,0,0,0,
-                                         0,0,1,1,1,1,1,0,
-                                         0,0,0,0,0,0,0,0]).reshape((24)))
+
+    assert np.array_equal(equip.uso_diario, np.array([1,1,1,0,0,0,0,1,
+                                                      1,1,1,1,1,1,1,1,
+                                                      0,0,0,0,0,0,0,1]).reshape((24)))
     assert equip.quantidade == 5

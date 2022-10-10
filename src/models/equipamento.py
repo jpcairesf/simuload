@@ -60,7 +60,7 @@ class Equipamento:
         for faixa in horarios:
             start = int(faixa[0])
             end = int(faixa[-1])
-            uso_diario[start:end] = 1
+            uso_diario[start:end+1] = 1
         
         self._uso_diario = uso_diario
         

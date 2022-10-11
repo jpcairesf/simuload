@@ -1,4 +1,5 @@
 import numpy as np
+from 
 class Equipamento: 
     
     def __init__(self,carga_id:int):

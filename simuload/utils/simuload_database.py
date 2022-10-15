@@ -1,4 +1,4 @@
-from utils.db_utils import db_connect, create_table
+from simuload.utils.db_utils import db_connect, create_table
 
 class Database:
     def __init__(self):

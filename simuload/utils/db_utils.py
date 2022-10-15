@@ -41,6 +41,37 @@ def create_table(con, create_table_sql):
         cur.execute(create_table_sql)
     except Exception as e:
         print(e)
+
+def criar_tabela_equipamentos(con):
+        sql_create_equip_table = """CREATE TABLE IF NOT EXISTS equipamentos (
+                                    id integer PRIMARY KEY,
+                                    nome text NOT NULL,
+                                    potencia REAL NOT NULL,
+                                    fator_potencia float NOT NULL,
+                                    uso_diario text NOT NULL
+                                )"""
+        if con is not None:
+            create_table(con,sql_create_equip_table)
+        else:
+            print("Error! cannot create the database connection.")
+
+def criar_tabela_cargas(con):
+        sql_create_carga_table = """CREATE TABLE IF NOT EXISTS cargas (
+                                    id integer PRIMARY KEY,
+                                    nome text NOT NULL,
+
+                                );"""
+        if con is not None:
+            create_table(con,sql_create_carga_table)
+        else:
+            print("Error! cannot create the database connection.")
+            
+def setup_database(con):
+    criar_tabela_equipamentos(con)
+    #criar_tabela_cargas(con)
+    
+    
+    
     
 
 if __name__=='__main__' :

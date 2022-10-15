@@ -1,4 +1,4 @@
-from utils.parsers import horario_parse
+from simuload.utils.parsers import horario_parse
 
 class Equipamento: 
     

@@ -3,7 +3,7 @@ import sys
 import os
 import numpy as np
 
-from models.equipamento import Equipamento
+from simuload.models.equipamento import Equipamento
 
 equip = None
 

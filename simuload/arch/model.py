@@ -1,11 +1,12 @@
-from simuload.utils.db_utils import db_connect, setup_database
+from simuload.utils.simuload_database import Database
 
 
-class Database:
+class Model:
     def __init__(self):
-        self.con = db_connect()
-        self.cur = self.con.cursor()
-        setup_database(self.con)
+        self.start_database()
+
+    def start_database(self):
+        self.database = Database()
 
     def inserir_equipamento(self, equipamento):
         """Adiciona uma nova linha na tabela.
@@ -14,7 +15,7 @@ class Database:
         sql = """
         INSERT INTO equipamentos (nome, potencia,fator_potencia,uso_diario)
         VALUES (?, ?, ?, ?)"""
-
+        
         try:
             self.cur.execute(sql, equipamento)
         except Exception as e:
@@ -89,11 +90,3 @@ class Database:
 
     def close_connection(self):
         self.con.close()
-
-
-if __name__ == "__main__":
-
-    banco = Database()
-    res = banco.consultar_equipamentos_registros_nome("")
-    print(res)
-    banco.close_connection()

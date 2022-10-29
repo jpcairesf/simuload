@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>569</width>
-    <height>377</height>
+    <width>567</width>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,21 +25,28 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="carga_menu">
        <property name="text">
-        <string>Criar Equipamento</string>
+        <string>Cargas</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="equipamento_menu">
        <property name="text">
-        <string>Editar Cargas</string>
+        <string>Equipamentos</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="editar_curva">
+       <property name="text">
+        <string>Editar Curva</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="simular_curva">
        <property name="text">
         <string>Simular Curva</string>
        </property>
@@ -47,7 +54,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QProgressBar" name="barra_progresso">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -73,7 +80,7 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="logo">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -95,7 +102,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QListView" name="listView">
+   <widget class="QListView" name="lista_curvas">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -108,7 +115,7 @@
      <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="titulo_curvas">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -132,8 +139,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>569</width>
-     <height>22</height>
+     <width>567</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

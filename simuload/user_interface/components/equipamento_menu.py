@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\equipamentoMenu.ui'
+# Form implementation generated from reading ui file 'original_design\equipamentoMenu.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -21,19 +21,31 @@ class Ui_MenuEquipamento(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.equipamentoLista = QtWidgets.QListView(self.verticalLayoutWidget)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.procuraEquip = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.procuraEquip.setObjectName("procuraEquip")
+        self.horizontalLayout_2.addWidget(self.procuraEquip)
+        self.procurarBotao = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.procurarBotao.setObjectName("procurarBotao")
+        self.horizontalLayout_2.addWidget(self.procurarBotao)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.equipamentoLista = QtWidgets.QListWidget(self.verticalLayoutWidget)
         self.equipamentoLista.setObjectName("equipamentoLista")
         self.verticalLayout.addWidget(self.equipamentoLista)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.ExcluirEquipamento = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.ExcluirEquipamento.setObjectName("ExcluirEquipamento")
+        self.horizontalLayout.addWidget(self.ExcluirEquipamento)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.EditarEquipamento = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.EditarEquipamento.setObjectName("EditarEquipamento")
-        self.horizontalLayout.addWidget(self.EditarEquipamento)
         self.NovoEquipamento = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.NovoEquipamento.setObjectName("NovoEquipamento")
         self.horizontalLayout.addWidget(self.NovoEquipamento)
+        self.EditarEquipamento = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.EditarEquipamento.setObjectName("EditarEquipamento")
+        self.horizontalLayout.addWidget(self.EditarEquipamento)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(MenuEquipamento)
@@ -42,5 +54,7 @@ class Ui_MenuEquipamento(object):
     def retranslateUi(self, MenuEquipamento):
         _translate = QtCore.QCoreApplication.translate
         MenuEquipamento.setWindowTitle(_translate("MenuEquipamento", "Equipamentos"))
-        self.EditarEquipamento.setText(_translate("MenuEquipamento", "Editar"))
+        self.procurarBotao.setText(_translate("MenuEquipamento", "Procurar"))
+        self.ExcluirEquipamento.setText(_translate("MenuEquipamento", "Excluir"))
         self.NovoEquipamento.setText(_translate("MenuEquipamento", "Criar Novo"))
+        self.EditarEquipamento.setText(_translate("MenuEquipamento", "Editar"))

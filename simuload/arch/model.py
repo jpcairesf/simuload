@@ -3,6 +3,7 @@ from simuload.utils.simuload_database import Database
 
 class Model:
     def __init__(self):
+        super().__init__()
         self.start_database()
 
     def start_database(self):
@@ -15,19 +16,19 @@ class Model:
         sql = """
         INSERT INTO equipamentos (nome, potencia,fator_potencia,uso_diario)
         VALUES (?, ?, ?, ?)"""
-        
+
         try:
-            self.cur.execute(sql, equipamento)
+            self.database.cur.execute(sql, equipamento)
         except Exception as e:
             print("\n[x] Falha ao inserir registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
             # rollback reverte/desfaz a operação.
-            self.con.rollback()
+            self.database.con.rollback()
         else:
             # commit registra a operação/transação no banco.
-            self.con.commit()
+            self.database.con.commit()
             print("\n[!] Registro inserido com sucesso [!]\n")
-        return self.cur.lastrowid
+        return self.database.cur.lastrowid
 
     def consultar_equipamento_pela_id(self, rowid):
         """Consulta registro pela id.
@@ -35,7 +36,7 @@ class Model:
         :return: É retornada uma tupla (tuple) com os dados.
         Caso o registro não seja localizado é retornado ``None``.
         """
-        return self.cur.execute(
+        return self.database.cur.execute(
             """SELECT * FROM equipamentos WHERE rowid=?""", (rowid,)
         ).fetchone()
 
@@ -48,9 +49,8 @@ class Model:
         contendo os dados.
         Se não houver dados é retornada uma lista vazia [``[]``].
         """
-        return self.cur.execute(
-            """SELECT * FROM equipamentos WHERE nome LIKE ? LIMIT ?""",
-            ("%" + nome + "%", limit),
+        return self.database.cur.execute(
+            """SELECT * FROM equipamentos WHERE nome LIKE ?""", ("%" + nome + "%",)
         ).fetchall()
 
     def modificar_equipamento(self, rowid, equipamento):
@@ -61,7 +61,7 @@ class Model:
 
         """
         try:
-            self.cur.execute(
+            self.database.cur.execute(
                 """UPDATE equipamentos SET nome=?, potencia=?,fator_potencia=?, uso_diario=?
         WHERE rowid=?""",
                 (*equipamento, rowid),
@@ -69,9 +69,9 @@ class Model:
         except Exception as e:
             print("\n[x] Falha na alteração do registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
-            self.con.rollback()
+            self.database.con.rollback()
         else:
-            self.con.commit()
+            self.database.con.commit()
             print("\n[!] Registro alterado com sucesso [!]\n")
 
     def remover_equipamento(self, rowid):
@@ -79,14 +79,16 @@ class Model:
         :param rowid (id): id da linha que se deseja remover.
         """
         try:
-            self.cur.execute(f"""DELETE FROM equipamentos WHERE rowid=?""", (rowid,))
+            self.database.cur.execute(
+                f"""DELETE FROM equipamentos WHERE rowid=?""", (rowid,)
+            )
         except Exception as e:
             print("\n[x] Falha ao remover registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
             self.con.rollback()
         else:
-            self.con.commit()
+            self.database.con.commit()
             print("\n[!] Registro removido com sucesso [!]\n")
 
     def close_connection(self):
-        self.con.close()
+        self.database.con.close()

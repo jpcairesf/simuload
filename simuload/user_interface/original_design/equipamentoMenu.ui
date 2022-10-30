@@ -24,10 +24,31 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListView" name="equipamentoLista"/>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="procuraEquip"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="procurarBotao">
+        <property name="text">
+         <string>Procurar</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QListWidget" name="equipamentoLista"/>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="ExcluirEquipamento">
+        <property name="text">
+         <string>Excluir</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -42,16 +63,16 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="EditarEquipamento">
+       <widget class="QPushButton" name="NovoEquipamento">
         <property name="text">
-         <string>Editar</string>
+         <string>Criar Novo</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="NovoEquipamento">
+       <widget class="QPushButton" name="EditarEquipamento">
         <property name="text">
-         <string>Criar Novo</string>
+         <string>Editar</string>
         </property>
        </widget>
       </item>

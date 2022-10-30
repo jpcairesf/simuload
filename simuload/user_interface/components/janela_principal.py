@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\janela_principal.ui'
+# Form implementation generated from reading ui file 'original_design\janela_principal.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -53,7 +53,11 @@ class Ui_MainWindow(object):
         self.logo.setObjectName("logo")
         self.lista_curvas = QtWidgets.QListView(self.centralwidget)
         self.lista_curvas.setGeometry(QtCore.QRect(250, 50, 301, 251))
-        self.lista_curvas.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked|QtWidgets.QAbstractItemView.EditKeyPressed|QtWidgets.QAbstractItemView.SelectedClicked)
+        self.lista_curvas.setEditTriggers(
+            QtWidgets.QAbstractItemView.DoubleClicked
+            | QtWidgets.QAbstractItemView.EditKeyPressed
+            | QtWidgets.QAbstractItemView.SelectedClicked
+        )
         self.lista_curvas.setObjectName("lista_curvas")
         self.titulo_curvas = QtWidgets.QLabel(self.centralwidget)
         self.titulo_curvas.setGeometry(QtCore.QRect(250, 20, 241, 21))
@@ -118,7 +122,9 @@ class Ui_MainWindow(object):
         self.equipamento_menu.setText(_translate("MainWindow", "Equipamentos"))
         self.editar_curva.setText(_translate("MainWindow", "Editar Curva"))
         self.simular_curva.setText(_translate("MainWindow", "Simular Curva"))
-        self.titulo_curvas.setText(_translate("MainWindow", "Selecione uma curva de cargas"))
+        self.titulo_curvas.setText(
+            _translate("MainWindow", "Selecione uma curva de cargas")
+        )
         self.menuFile.setTitle(_translate("MainWindow", "Arquivo"))
         self.menuSalvar_como.setTitle(_translate("MainWindow", "Salvar como..."))
         self.menuEditar.setTitle(_translate("MainWindow", "Configurações"))

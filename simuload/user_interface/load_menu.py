@@ -42,6 +42,7 @@ class LoadMenu(QWidget):
     def delete_load(self):
         load_id = self.get_selected_load()
         self.service.remover_carga(load_id)
+        self.service.remover_equip_na_carga(load_id)
         self.get_load()
 
     def edit_load(self):

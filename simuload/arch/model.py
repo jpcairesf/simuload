@@ -163,15 +163,70 @@ class Model:
             self.database.con.commit()
             print("\n[!] Registro removido com sucesso [!]\n")
 
-    def consultar_carga_equipamentos(self, cargaid):
+    def consultar_carga_equipamentos(self, carga_id):
         return self.database.cur.execute(
             """SELECT * FROM cargas
             WHERE rowid=?
-            INNER JOIN carga_equipamento on carga.id = carga_equipamento.carga_id
-            INNER JOIN equipamentos on carga_equipamento.equipamento_id = equipamento.id
+            INNER JOIN carga_equipamento ON carga.id = carga_equipamento.carga_id
+            INNER JOIN equipamentos ON carga_equipamento.equipamento_id = equipamento.id;
             """,
-            (cargaid,),
+            (carga_id,),
         ).fetchone()
+
+    def inserir_equipamento_na_carga(self, carga_id, equip_id, qtd):
+        """Adiciona uma nova linha na tabela.
+        :param cargas (tuple): Tupla contendo os dados.
+        """
+        sql = """
+        INSERT INTO carga_equipamento (carga_id, equipamento_id, equipamento_qtd)
+        VALUES (?, ?, ?)"""
+
+        try:
+            self.database.cur.execute(
+                sql,
+                (
+                    carga_id,
+                    equip_id,
+                    qtd,
+                ),
+            )
+        except Exception as e:
+            print("\n[x] Falha ao inserir registro [x]\n")
+            print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
+            # rollback reverte/desfaz a operação.
+            self.database.con.rollback()
+        else:
+            # commit registra a operação/transação no banco.
+            self.database.con.commit()
+            print("\n[!] Registro inserido com sucesso [!]\n")
+        return self.database.cur.lastrowid
+
+    def remover_equip_na_carga(self,carga_id):
+        """Remove uma linha da tabela com base na id da linha.
+        :param rowid (id): id da linha que se deseja remover.
+        """
+        try:
+            self.database.cur.execute(f"""DELETE FROM carga_equipamento WHERE carga_id=?""", (carga_id,))
+        except Exception as e:
+            print("\n[x] Falha ao remover registro [x]\n")
+            print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
+            self.con.rollback()
+        else:
+            self.database.con.commit()
+            print("\n[!] Registro removido com sucesso [!]\n")
+        
+    def last_id_table(self, table):
+        try:
+            cursor = self.database.cur.execute("SELECT max(id) FROM carga_equipamento")
+            return cursor.fetchone()[0]
+        except Exception as e:
+            print("\n[x] Falha ao detectar id [x]\n")
+            print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
+            # rollback reverte/desfaz a operação.
+            self.database.con.rollback()
+        else:
+            # commit registra a operação/transação no banco.
+            self.database.con.commit()
 
     def close_connection(self):
         self.database.con.close()

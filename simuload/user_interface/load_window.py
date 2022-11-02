@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QDialog
 from simuload.user_interface.components.carga_nova import Ui_NovaCarga
+import re
 
 
 class LoadWindow(QDialog):
@@ -17,8 +18,12 @@ class LoadWindow(QDialog):
 
         if self.edit:
             self.ui.buttonBox.accepted.connect(self.update_load)
+            self.carga_id = self.edit
+            self.get_equip_in_load(self.carga_id)
+            
         else:
             self.ui.buttonBox.accepted.connect(self.create_load)
+            self.carga_id = self.service.last_id_table("carga_equipamento")
 
         self.ui.buttonBox.rejected.connect(self.close)
 
@@ -36,6 +41,7 @@ class LoadWindow(QDialog):
         load_id = self.edit
         try:
             self.service.modificar_carga(load_id, self.input_info())
+
             self.close()
         except Exception as e:
             print(e)
@@ -45,6 +51,7 @@ class LoadWindow(QDialog):
 
         try:
             self.service.inserir_carga(self.input_info())
+            self.add_equip_in_load()
             self.close()
         except Exception as e:
             print(e)
@@ -60,26 +67,46 @@ class LoadWindow(QDialog):
             equip_label = str(equip[0]) + " - " + equip[1]
             self.ui.equipList.insertItem(equip[0], equip_label)
 
-    def add_one_equip(self):
+    def get_selected_equips(self):
         list_items = self.ui.equipList.selectedItems()
         if not list_items:
-            return
-        for item in list_items:
-            equip = item.text() + " (1)"
+            return []
+        return list_items
+
+    def add_one_equip(self):
+        for item in self.get_selected_equips():
+            equip = item.text() + " [1]"
             self.ui.addedEquipList.addItem(equip)
 
     def add_many_equip(self):
-        list_items = self.ui.equipList.selectedItems()
-        if not list_items:
-            return
-        for item in list_items:
+        for item in self.get_selected_equips():
             qty = self.ui.equipNum.text()
-            equip = item.text() + f" ({qty})"
+            equip = item.text() + f" [{qty}]"
             self.ui.addedEquipList.addItem(equip)
 
-    def remove_equip(self):
+    def get_selected_added(self):
         list_items = self.ui.addedEquipList.selectedItems()
         if not list_items:
-            return
-        for item in list_items:
+            return []
+        return list_items
+
+    def remove_equip(self):
+        for item in self.get_selected_added():
             self.ui.addedEquipList.takeItem(self.ui.addedEquipList.row(item))
+
+    def get_added_equips(self):
+        return [
+            self.ui.addedEquipList.item(row)
+            for row in range(self.ui.addedEquipList.count())
+        ]
+
+    def add_equip_in_load(self):
+        for equip in self.get_added_equips():
+            text = equip.text()
+            equip_id = int(text.split(" - ")[0])
+            qtd = int(re.search(r"(?<=\[).+?(?=\])", text).group())
+            self.service.inserir_equip_na_carga(self.carga_id, equip_id, qtd)
+
+    def get_equip_in_load(self,carga_id):
+        print(self.service.consultar_equip_na_carga(carga_id))
+        return self.service.consultar_equip_na_carga(carga_id)

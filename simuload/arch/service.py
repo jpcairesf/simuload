@@ -54,3 +54,18 @@ class Service:
 
     def remover_carga(self, carga_id):
         self.model.remover_carga(carga_id)
+    
+
+
+    def last_id_table(self, table):
+        last_id = 1 if not self.model.last_id_table(table) else self.model.last_id_table(table)
+        return last_id
+
+    def inserir_equip_na_carga(self, carga_id: int, equip_id: int, qtd: int):
+        return self.model.inserir_equipamento_na_carga(carga_id, equip_id, qtd)
+
+    def remover_equip_na_carga(self,carga_id):
+        self.model.remover_equip_na_carga(carga_id)
+    
+    def consultar_equip_na_carga(self,carga_id):
+        return self.model.consultar_carga_equipamentos(carga_id)

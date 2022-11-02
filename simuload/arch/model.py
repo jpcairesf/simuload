@@ -86,17 +86,17 @@ class Model:
         else:
             self.database.con.commit()
             print("\n[!] Registro removido com sucesso [!]\n")
-            
+
     def inserir_carga(self, carga):
         """Adiciona uma nova linha na tabela.
         :param cargas (tuple): Tupla contendo os dados.
         """
         sql = """
-        INSERT INTO equipamentos (nome)
+        INSERT INTO cargas (nome)
         VALUES (?)"""
 
         try:
-            self.database.cur.execute(sql, carga)
+            self.database.cur.execute(sql, (carga,))
         except Exception as e:
             print("\n[x] Falha ao inserir registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
@@ -107,7 +107,7 @@ class Model:
             self.database.con.commit()
             print("\n[!] Registro inserido com sucesso [!]\n")
         return self.database.cur.lastrowid
-    
+
     def consultar_carga_pela_id(self, rowid):
         """Consulta registro pela id.
         :param rowid (int): id do usuário que se deseja consultar.
@@ -127,7 +127,7 @@ class Model:
         return self.database.cur.execute(
             """SELECT * FROM cargas WHERE nome LIKE ?""", ("%" + nome + "%",)
         ).fetchall()
-        
+
     def modificar_carga(self, rowid, carga):
         """Alterar uma linha da tabela com base na id.
         A query está configurada para alterar apenas o nome e sexo.
@@ -154,9 +154,7 @@ class Model:
         :param rowid (id): id da linha que se deseja remover.
         """
         try:
-            self.database.cur.execute(
-                f"""DELETE FROM cargas WHERE rowid=?""", (rowid,)
-            )
+            self.database.cur.execute(f"""DELETE FROM cargas WHERE rowid=?""", (rowid,))
         except Exception as e:
             print("\n[x] Falha ao remover registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
@@ -164,17 +162,16 @@ class Model:
         else:
             self.database.con.commit()
             print("\n[!] Registro removido com sucesso [!]\n")
-        
-    
-            
+
     def consultar_carga_equipamentos(self, cargaid):
         return self.database.cur.execute(
             """SELECT * FROM cargas
             WHERE rowid=?
             INNER JOIN carga_equipamento on carga.id = carga_equipamento.carga_id
             INNER JOIN equipamentos on carga_equipamento.equipamento_id = equipamento.id
-            """, (cargaid,)
-        ).fetchone()      
+            """,
+            (cargaid,),
+        ).fetchone()
 
     def close_connection(self):
         self.database.con.close()

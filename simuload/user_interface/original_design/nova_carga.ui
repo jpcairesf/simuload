@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>396</width>
-    <height>300</height>
+    <width>565</width>
+    <height>379</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>381</width>
-     <height>41</height>
+     <width>541</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="title">
@@ -38,14 +38,36 @@
      <string>Conjunto de equipamentos que constituem um consumidor</string>
     </property>
    </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>521</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="carga_label">
+       <property name="text">
+        <string>Nome</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="carga_nome"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
-     <width>381</width>
-     <height>201</height>
+     <y>100</y>
+     <width>541</width>
+     <height>221</height>
     </rect>
    </property>
    <property name="title">
@@ -55,8 +77,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>19</y>
-      <width>361</width>
+      <y>20</y>
+      <width>521</width>
       <height>181</height>
      </rect>
     </property>
@@ -83,7 +105,7 @@
        <item>
         <widget class="QSpinBox" name="equipNum">
          <property name="minimum">
-          <number>0</number>
+          <number>1</number>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -112,8 +134,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>260</y>
-     <width>381</width>
+     <y>320</y>
+     <width>541</width>
      <height>16</height>
     </rect>
    </property>
@@ -121,44 +143,21 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
+  <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>270</y>
-     <width>261</width>
-     <height>30</height>
+     <x>210</x>
+     <y>340</y>
+     <width>341</width>
+     <height>32</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="criarCarga">
-      <property name="text">
-       <string>OK</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="cancelarCarga">
-      <property name="text">
-       <string>Cancelar</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -38,7 +38,9 @@ class Ui_MenuCarga(object):
         self.ExcluirCarga = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.ExcluirCarga.setObjectName("ExcluirCarga")
         self.horizontalLayout.addWidget(self.ExcluirCarga)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.horizontalLayout.addItem(spacerItem)
         self.NovaCarga = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.NovaCarga.setObjectName("NovaCarga")

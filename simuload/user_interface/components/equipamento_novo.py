@@ -18,7 +18,9 @@ class Ui_NovoEquipamento(object):
         self.buttonBox = QtWidgets.QDialogButtonBox(NovoEquipamento)
         self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(
+            QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok
+        )
         self.buttonBox.setObjectName("buttonBox")
         self.descEquip = QtWidgets.QGroupBox(NovoEquipamento)
         self.descEquip.setGeometry(QtCore.QRect(10, 10, 381, 51))
@@ -46,7 +48,9 @@ class Ui_NovoEquipamento(object):
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.pot_label)
         self.equip_potencia = QtWidgets.QLineEdit(self.formLayoutWidget_3)
         self.equip_potencia.setObjectName("equip_potencia")
-        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.equip_potencia)
+        self.formLayout_3.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.equip_potencia
+        )
         self.fp_label = QtWidgets.QLabel(self.formLayoutWidget_3)
         self.fp_label.setObjectName("fp_label")
         self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.fp_label)
@@ -67,9 +71,15 @@ class Ui_NovoEquipamento(object):
 
     def retranslateUi(self, NovoEquipamento):
         _translate = QtCore.QCoreApplication.translate
-        NovoEquipamento.setWindowTitle(_translate("NovoEquipamento", "Novo Equipamento"))
+        NovoEquipamento.setWindowTitle(
+            _translate("NovoEquipamento", "Novo Equipamento")
+        )
         self.descEquip.setTitle(_translate("NovoEquipamento", "Equipamento"))
-        self.label.setText(_translate("NovoEquipamento", "Equipamento elétrico/iluminação de um ambiente"))
+        self.label.setText(
+            _translate(
+                "NovoEquipamento", "Equipamento elétrico/iluminação de um ambiente"
+            )
+        )
         self.groupBox.setTitle(_translate("NovoEquipamento", "Parâmetros"))
         self.nome_label.setText(_translate("NovoEquipamento", "Nome"))
         self.pot_label.setText(_translate("NovoEquipamento", "Potência "))

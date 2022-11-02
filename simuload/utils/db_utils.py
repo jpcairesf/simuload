@@ -66,12 +66,13 @@ def criar_tabela_cargas(con):
     else:
         print("Error! cannot create the database connection.")
 
-       
+
 def criar_tabela_carga_equipamento(con):
     sql_create_carga_table = """CREATE TABLE IF NOT EXISTS carga_equipamento (
                                     id integer PRIMARY KEY,
-                                    carga_id INTEGER,
-                                    equipamento_id INTEGER,
+                                    carga_id INTEGER NOT NULL,
+                                    equipamento_id INTEGER NOT NULL,
+                                    equipamento_qtd INTEGER NOT NULL,
                                     FOREIGN KEY (carga_id) REFERENCES cargas (id),
                                     FOREIGN KEY (equipamento_id) REFERENCES equipamentos (id)
                                 );"""
@@ -79,7 +80,8 @@ def criar_tabela_carga_equipamento(con):
         create_table(con, sql_create_carga_table)
     else:
         print("Error! cannot create the database connection.")
-        
+
+
 def setup_database(con):
     criar_tabela_equipamentos(con)
     criar_tabela_cargas(con)

@@ -38,7 +38,9 @@ class Ui_MenuEquipamento(object):
         self.ExcluirEquipamento = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.ExcluirEquipamento.setObjectName("ExcluirEquipamento")
         self.horizontalLayout.addWidget(self.ExcluirEquipamento)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.horizontalLayout.addItem(spacerItem)
         self.NovoEquipamento = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.NovoEquipamento.setObjectName("NovoEquipamento")

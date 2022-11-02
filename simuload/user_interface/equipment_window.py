@@ -17,9 +17,8 @@ class EquipmentWindow(QDialog):
             self.ui.buttonBox.accepted.connect(self.update_equipment)
         else:
             self.ui.buttonBox.accepted.connect(self.create_equipment)
-            
+
         self.ui.buttonBox.rejected.connect(self.close)
-        
 
     def input_info(self):
         return {
@@ -34,7 +33,7 @@ class EquipmentWindow(QDialog):
         self.ui.equip_potencia.setText(str(equipamento[2]))
         self.ui.equip_fp.setText(str(equipamento[3]))
         self.ui.equip_uso.setText(str(equipamento[4]))
-        
+
     def update_equipment(self):
         equip_id = self.edit
         try:

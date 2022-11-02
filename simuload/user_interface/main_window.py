@@ -32,9 +32,9 @@ class MainWindow(QMainWindow):
         self.widget = EquipmentMenu(self)
 
         self.widget.show()
-        
+
     def load_menu(self):
-        
+
         self.widget = LoadMenu(self)
         self.widget.show()
 

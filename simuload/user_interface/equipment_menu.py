@@ -44,7 +44,7 @@ class EquipmentMenu(QWidget):
         equip_id = self.get_selected_equip()
         self.service.remover_equipamento(equip_id)
         self.get_equipamentos()
-        
+
     def edit_equip(self):
         equip_id = self.get_selected_equip()
         equipamento = self.service.consultar_equipamento_id(equip_id)

@@ -1,5 +1,6 @@
 from simuload.arch.model import Model
 
+
 class Service:
     def __init__(self):
         self.start_model()
@@ -36,7 +37,7 @@ class Service:
         self.model.remover_equipamento(equip_id)
 
     def inserir_carga(self, carga: dict):
-        
+
         nome = carga["Nome"]
         self.model.inserir_carga((nome))
 
@@ -49,11 +50,7 @@ class Service:
     def modificar_carga(self, carga_id, carga: dict):
 
         nome = carga["Nome"]
-        self.model.modificar_equipamento(
-            carga_id, (nome)
-        )       
+        self.model.modificar_carga(carga_id, (nome))
 
     def remover_carga(self, carga_id):
-        self.model.remover_equipamento(carga_id)
-    
-
+        self.model.remover_carga(carga_id)

@@ -18,10 +18,10 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
 
         self.ui.setupUi(self)
-        self.set_connections()
-
         self.service = service
-
+        self.set_connections()
+        self.get_curvas()
+        
     def set_connections(self):
 
         self.ui.equipamento_menu.clicked.connect(self.equipment_menu)
@@ -43,3 +43,13 @@ class MainWindow(QMainWindow):
         self.widget = EquipmentWindow(self)
 
         self.widget.show()
+    
+    def get_curvas(self):
+        self.curvas = self.service.consultar_curva(consulta="")
+        self.add_itens()
+    
+    def add_itens(self):
+        self.ui.curvaList.clear()
+        for curva in self.curvas:
+            curva_label = str(curva[0]) + " - " + curva[1]
+            self.ui.curvaList.insertItem(curva[0], curva_label)

@@ -14,7 +14,10 @@ class Service:
         potencia = equipamento["Potencia"]
         fator_potencia = equipamento["FatorPotencia"]
         uso_diario = equipamento["Uso"]
-        self.model.inserir_equipamento((nome, potencia, fator_potencia, uso_diario))
+        self.model.inserir_equipamento((nome,
+                                        potencia,
+                                        fator_potencia,
+                                        uso_diario))
 
     def consultar_equipamentos(self, consulta: str = ""):
         return self.model.consultar_equipamentos_registros_nome(consulta)
@@ -54,18 +57,55 @@ class Service:
 
     def remover_carga(self, carga_id):
         self.model.remover_carga(carga_id)
-    
 
-
-    def last_id_table(self, table):
-        last_id = 1 if not self.model.last_id_table(table) else self.model.last_id_table(table)
+    def last_id_carga_equipamento(self):
+        last_id = (
+            1
+            if not self.model.last_id_carga_equipamento()
+            else self.model.last_id_carga_equipamento()
+        )
         return last_id
 
     def inserir_equip_na_carga(self, carga_id: int, equip_id: int, qtd: int):
         return self.model.inserir_equipamento_na_carga(carga_id, equip_id, qtd)
 
-    def remover_equip_na_carga(self,carga_id):
+    def remover_equip_na_carga(self, carga_id):
         self.model.remover_equip_na_carga(carga_id)
-    
-    def consultar_equip_na_carga(self,carga_id):
+
+    def consultar_equip_na_carga(self, carga_id):
         return self.model.consultar_carga_equipamentos(carga_id)
+
+    def inserir_curva(self, curva: dict):
+        nome = curva["Nome"]
+        self.model.inserir_curva(nome)
+        
+    def consultar_curva_pela_id(self, rowid):
+        self.model.consultar_curva_pela_id(rowid)
+    
+    def consultar_curva(self, consulta: str = ""):
+        return self.model.consultar_curvas_registros_nome(consulta)
+    
+    def modificar_curva(self, rowid, curva: dict):
+        nome = curva["Nome"]
+        self.model.modificar_curva(rowid, nome)        
+        
+    def remover_curva(self, rowid):
+        self.model.remover_curva(rowid)
+    
+    def consultar_curva_carga(self, curva_id):
+        self.model.consultar_curva_carga(curva_id)
+    
+    def inserir_carga_na_curva(self, curva_id, carga_id, qtd):
+        self.model.inserir_carga_na_curva(curva_id, carga_id, qtd)
+    
+    def remover_carga_na_curva(self, curva_id):
+        self.model.remover_carga_na_curva(curva_id)
+    
+    def last_id_curva_carga(self):
+        last_id = (
+            1
+            if not self.model.last_id_curva_carga()
+            else self.model.last_id_curva_carga()
+        )
+        return last_id
+        

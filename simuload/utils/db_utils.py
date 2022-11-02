@@ -80,12 +80,38 @@ def criar_tabela_carga_equipamento(con):
         create_table(con, sql_create_carga_table)
     else:
         print("Error! cannot create the database connection.")
-
+           
+def criar_tabela_curvas(con):
+    sql_create_carga_table = """CREATE TABLE IF NOT EXISTS Curvas (
+                                    CurvaId integer PRIMARY KEY,
+                                    CurvaNome text NOT NULL
+                                );"""
+    if con is not None:
+        create_table(con, sql_create_carga_table)
+    else:
+        print("Error! cannot create the database connection.")
+        
+def criar_tabela_curva_carga(con):
+    sql_create_carga_table = """CREATE TABLE IF NOT EXISTS CurvaCarga (
+                                    CurvaCargaId integer PRIMARY KEY,
+                                    CurvaId INTEGER NOT NULL,
+                                    CargaId INTEGER NOT NULL,
+                                    CargaQtd INTEGER NOT NULL,
+                                    FOREIGN KEY (CargaId) REFERENCES Cargas (CargaId),
+                                    FOREIGN KEY (CurvaId) REFERENCES Curvas (CurvaId)
+                                );"""
+    if con is not None:
+        create_table(con, sql_create_carga_table)
+    else:
+        print("Error! cannot create the database connection.")
+    
 
 def setup_database(con):
     criar_tabela_equipamentos(con)
     criar_tabela_cargas(con)
     criar_tabela_carga_equipamento(con)
+    criar_tabela_curvas(con)
+    criar_tabela_curva_carga(con)
 
 
 if __name__ == "__main__":

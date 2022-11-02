@@ -21,11 +21,9 @@ class LoadWindow(QDialog):
             self.get_equip_in_load(self.carga_id)
             self.ui.buttonBox.accepted.connect(self.update_load)
 
-            
         else:
-            self.carga_id = self.service.last_id_table("carga_equipamento")
+            self.carga_id = self.service.last_id_carga_equipamento("carga_equipamento")
             self.ui.buttonBox.accepted.connect(self.create_load)
-            
 
         self.ui.buttonBox.rejected.connect(self.close)
 
@@ -118,4 +116,3 @@ class LoadWindow(QDialog):
         for equip in added_equip:
             added_equip_label = str(equip[0]) + " - " + equip[1] + f" [{equip[2]}]"
             self.ui.addedEquipList.insertItem(equip[0], added_equip_label)
-            

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>567</width>
-    <height>397</height>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,19 +54,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QProgressBar" name="barra_progresso">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>310</y>
-      <width>551</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
@@ -102,19 +89,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QListView" name="lista_curvas">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>50</y>
-      <width>301</width>
-      <height>251</height>
-     </rect>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="titulo_curvas">
     <property name="geometry">
      <rect>
@@ -131,6 +105,16 @@
     </property>
     <property name="text">
      <string>Selecione uma curva de cargas</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="curvaList">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>50</y>
+      <width>301</width>
+      <height>261</height>
+     </rect>
     </property>
    </widget>
   </widget>

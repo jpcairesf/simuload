@@ -43,12 +43,12 @@ def create_table(con, create_table_sql):
 
 
 def criar_tabela_equipamentos(con):
-    sql_create_equip_table = """CREATE TABLE IF NOT EXISTS equipamentos (
-                                    id INTEGER PRIMARY KEY,
-                                    nome TEXT NOT NULL,
-                                    potencia REAL NOT NULL,
-                                    fator_potencia REAL NOT NULL,
-                                    uso_diario TEXT NOT NULL
+    sql_create_equip_table = """CREATE TABLE IF NOT EXISTS Equipamentos (
+                                    EquipamentoId INTEGER PRIMARY KEY,
+                                    EquipamentoNome TEXT NOT NULL,
+                                    EquipamentoPotencia REAL NOT NULL,
+                                    EquipamentoFP REAL NOT NULL,
+                                    EquipamentoUsoDiario TEXT NOT NULL
                                 )"""
     if con is not None:
         create_table(con, sql_create_equip_table)
@@ -57,9 +57,9 @@ def criar_tabela_equipamentos(con):
 
 
 def criar_tabela_cargas(con):
-    sql_create_carga_table = """CREATE TABLE IF NOT EXISTS cargas (
-                                    id integer PRIMARY KEY,
-                                    nome text NOT NULL
+    sql_create_carga_table = """CREATE TABLE IF NOT EXISTS Cargas (
+                                    CargaId integer PRIMARY KEY,
+                                    CargaNome text NOT NULL
                                 );"""
     if con is not None:
         create_table(con, sql_create_carga_table)
@@ -68,13 +68,13 @@ def criar_tabela_cargas(con):
 
 
 def criar_tabela_carga_equipamento(con):
-    sql_create_carga_table = """CREATE TABLE IF NOT EXISTS carga_equipamento (
-                                    id integer PRIMARY KEY,
-                                    carga_id INTEGER NOT NULL,
-                                    equipamento_id INTEGER NOT NULL,
-                                    equipamento_qtd INTEGER NOT NULL,
-                                    FOREIGN KEY (carga_id) REFERENCES cargas (id),
-                                    FOREIGN KEY (equipamento_id) REFERENCES equipamentos (id)
+    sql_create_carga_table = """CREATE TABLE IF NOT EXISTS CargaEquipamento (
+                                    CargaEquipamentoId integer PRIMARY KEY,
+                                    CargaId INTEGER NOT NULL,
+                                    EquipamentoId INTEGER NOT NULL,
+                                    EquipamentoQtd INTEGER NOT NULL,
+                                    FOREIGN KEY (CargaId) REFERENCES Cargas (CargaId),
+                                    FOREIGN KEY (EquipamentoId) REFERENCES Equipamentos (EquipamentoId)
                                 );"""
     if con is not None:
         create_table(con, sql_create_carga_table)

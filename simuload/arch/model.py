@@ -14,7 +14,7 @@ class Model:
         :param equipamento (tuple): Tupla contendo os dados.
         """
         sql = """
-        INSERT INTO equipamentos (nome, potencia,fator_potencia,uso_diario)
+        INSERT INTO Equipamentos (EquipamentoNome, EquipamentoPotencia,EquipamentoFP,EquipamentoUsoDiario)
         VALUES (?, ?, ?, ?)"""
 
         try:
@@ -37,7 +37,7 @@ class Model:
         Caso o registro não seja localizado é retornado ``None``.
         """
         return self.database.cur.execute(
-            """SELECT * FROM equipamentos WHERE rowid=?""", (rowid,)
+            """SELECT * FROM Equipamentos WHERE rowid=?""", (rowid,)
         ).fetchone()
 
     def consultar_equipamentos_registros_nome(self, nome):
@@ -47,7 +47,7 @@ class Model:
         Se não houver dados é retornada uma lista vazia [``[]``].
         """
         return self.database.cur.execute(
-            """SELECT * FROM equipamentos WHERE nome LIKE ?""", ("%" + nome + "%",)
+            """SELECT * FROM Equipamentos WHERE EquipamentoNome LIKE ?""", ("%" + nome + "%",)
         ).fetchall()
 
     def modificar_equipamento(self, rowid, equipamento):
@@ -59,7 +59,7 @@ class Model:
         """
         try:
             self.database.cur.execute(
-                """UPDATE equipamentos SET nome=?, potencia=?,fator_potencia=?, uso_diario=?
+                """UPDATE Equipamentos SET EquipamentoNome=?, EquipamentoPotencia=?,EquipamentoFP=?, EquipamentoUsoDiario=?
         WHERE rowid=?""",
                 (*equipamento, rowid),
             )
@@ -77,7 +77,7 @@ class Model:
         """
         try:
             self.database.cur.execute(
-                f"""DELETE FROM equipamentos WHERE rowid=?""", (rowid,)
+                f"""DELETE FROM Equipamentos WHERE rowid=?""", (rowid,)
             )
         except Exception as e:
             print("\n[x] Falha ao remover registro [x]\n")
@@ -92,7 +92,7 @@ class Model:
         :param cargas (tuple): Tupla contendo os dados.
         """
         sql = """
-        INSERT INTO cargas (nome)
+        INSERT INTO Cargas (CargaNome)
         VALUES (?)"""
 
         try:
@@ -115,7 +115,7 @@ class Model:
         Caso o registro não seja localizado é retornado ``None``.
         """
         return self.database.cur.execute(
-            """SELECT * FROM cargas WHERE rowid=?""", (rowid,)
+            """SELECT * FROM Cargas WHERE rowid=?""", (rowid,)
         ).fetchone()
 
     def consultar_cargas_registros_nome(self, nome):
@@ -125,7 +125,7 @@ class Model:
         Se não houver dados é retornada uma lista vazia [``[]``].
         """
         return self.database.cur.execute(
-            """SELECT * FROM cargas WHERE nome LIKE ?""", ("%" + nome + "%",)
+            """SELECT * FROM Cargas WHERE CargaNome LIKE ?""", ("%" + nome + "%",)
         ).fetchall()
 
     def modificar_carga(self, rowid, carga):
@@ -137,7 +137,7 @@ class Model:
         """
         try:
             self.database.cur.execute(
-                """UPDATE cargas SET nome=?
+                """UPDATE Cargas SET CargaNome=?
                 WHERE rowid=?""",
                 (carga, rowid),
             )
@@ -154,7 +154,7 @@ class Model:
         :param rowid (id): id da linha que se deseja remover.
         """
         try:
-            self.database.cur.execute(f"""DELETE FROM cargas WHERE rowid=?""", (rowid,))
+            self.database.cur.execute(f"""DELETE FROM Cargas WHERE rowid=?""", (rowid,))
         except Exception as e:
             print("\n[x] Falha ao remover registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
@@ -165,20 +165,17 @@ class Model:
 
     def consultar_carga_equipamentos(self, carga_id):
         return self.database.cur.execute(
-            """SELECT * FROM cargas
-            WHERE rowid=?
-            INNER JOIN carga_equipamento ON carga.id = carga_equipamento.carga_id
-            INNER JOIN equipamentos ON carga_equipamento.equipamento_id = equipamento.id;
-            """,
-            (carga_id,),
-        ).fetchone()
+            """SELECT Equipamentos.EquipamentoId, EquipamentoNome, EquipamentoQtd FROM CargaEquipamento
+            INNER JOIN Equipamentos
+            ON CargaEquipamento.EquipamentoId = Equipamentos.EquipamentoId
+            WHERE CargaId=?;""", (carga_id,)).fetchall()
 
     def inserir_equipamento_na_carga(self, carga_id, equip_id, qtd):
         """Adiciona uma nova linha na tabela.
         :param cargas (tuple): Tupla contendo os dados.
         """
         sql = """
-        INSERT INTO carga_equipamento (carga_id, equipamento_id, equipamento_qtd)
+        INSERT INTO CargaEquipamento (CargaId, EquipamentoId, EquipamentoQtd)
         VALUES (?, ?, ?)"""
 
         try:
@@ -206,7 +203,7 @@ class Model:
         :param rowid (id): id da linha que se deseja remover.
         """
         try:
-            self.database.cur.execute(f"""DELETE FROM carga_equipamento WHERE carga_id=?""", (carga_id,))
+            self.database.cur.execute(f"""DELETE FROM CargaEquipamento WHERE CargaId=?""", (carga_id,))
         except Exception as e:
             print("\n[x] Falha ao remover registro [x]\n")
             print(f"[x] Revertendo operação (rollback) [x]: {e}\n")
@@ -217,7 +214,7 @@ class Model:
         
     def last_id_table(self, table):
         try:
-            cursor = self.database.cur.execute("SELECT max(id) FROM carga_equipamento")
+            cursor = self.database.cur.execute("SELECT max(CargaEquipamentoId) FROM CargaEquipamento")
             return cursor.fetchone()[0]
         except Exception as e:
             print("\n[x] Falha ao detectar id [x]\n")

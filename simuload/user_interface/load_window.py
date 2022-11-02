@@ -17,13 +17,15 @@ class LoadWindow(QDialog):
     def set_connections(self):
 
         if self.edit:
-            self.ui.buttonBox.accepted.connect(self.update_load)
             self.carga_id = self.edit
             self.get_equip_in_load(self.carga_id)
+            self.ui.buttonBox.accepted.connect(self.update_load)
+
             
         else:
-            self.ui.buttonBox.accepted.connect(self.create_load)
             self.carga_id = self.service.last_id_table("carga_equipamento")
+            self.ui.buttonBox.accepted.connect(self.create_load)
+            
 
         self.ui.buttonBox.rejected.connect(self.close)
 
@@ -41,7 +43,8 @@ class LoadWindow(QDialog):
         load_id = self.edit
         try:
             self.service.modificar_carga(load_id, self.input_info())
-
+            self.service.remover_equip_na_carga(load_id)
+            self.add_equip_in_load()
             self.close()
         except Exception as e:
             print(e)
@@ -107,6 +110,12 @@ class LoadWindow(QDialog):
             qtd = int(re.search(r"(?<=\[).+?(?=\])", text).group())
             self.service.inserir_equip_na_carga(self.carga_id, equip_id, qtd)
 
-    def get_equip_in_load(self,carga_id):
-        print(self.service.consultar_equip_na_carga(carga_id))
-        return self.service.consultar_equip_na_carga(carga_id)
+    def get_equip_in_load(self, carga_id):
+        added_equip = self.service.consultar_equip_na_carga(carga_id)
+        print(added_equip)
+        self.ui.addedEquipList.clear()
+
+        for equip in added_equip:
+            added_equip_label = str(equip[0]) + " - " + equip[1] + f" [{equip[2]}]"
+            self.ui.addedEquipList.insertItem(equip[0], added_equip_label)
+            

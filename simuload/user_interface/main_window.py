@@ -4,6 +4,7 @@ from simuload.user_interface.components.janela_principal import Ui_MainWindow
 
 from simuload.user_interface.equipment_menu import EquipmentMenu
 from simuload.user_interface.equipment_window import EquipmentWindow
+from simuload.user_interface.load_menu import LoadMenu
 
 
 class MainWindow(QMainWindow):
@@ -24,11 +25,17 @@ class MainWindow(QMainWindow):
     def set_connections(self):
 
         self.ui.equipamento_menu.clicked.connect(self.equipment_menu)
+        self.ui.carga_menu.clicked.connect(self.load_menu)
 
     def equipment_menu(self):
 
         self.widget = EquipmentMenu(self)
 
+        self.widget.show()
+        
+    def load_menu(self):
+        
+        self.widget = LoadMenu(self)
         self.widget.show()
 
     def new_equip(self):

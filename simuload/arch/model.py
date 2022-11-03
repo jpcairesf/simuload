@@ -170,6 +170,13 @@ class Model:
             ON CargaEquipamento.EquipamentoId = Equipamentos.EquipamentoId
             WHERE CargaId=?;""", (carga_id,)).fetchall()
 
+    def consultar_carga_equipamentos_consumo(self, carga_id):
+        return self.database.cur.execute(
+            """SELECT Equipamentos.EquipamentoId, EquipamentoPotencia, EquipamentoUso, EquipamentoNome, EquipamentoQtd FROM CargaEquipamento
+            INNER JOIN Equipamentos
+            ON CargaEquipamento.EquipamentoId = Equipamentos.EquipamentoId
+            WHERE CargaId=?;""", (carga_id,)).fetchall()
+
     def inserir_equipamento_na_carga(self, carga_id, equip_id, qtd):
         """Adiciona uma nova linha na tabela.
         :param cargas (tuple): Tupla contendo os dados.

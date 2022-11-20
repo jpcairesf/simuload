@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
+      <y>120</y>
       <width>211</width>
-      <height>141</height>
+      <height>193</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -42,6 +42,13 @@
       <widget class="QPushButton" name="editar_curva">
        <property name="text">
         <string>Editar Curva</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="excluir_curva">
+       <property name="text">
+        <string>Excluir Curva</string>
        </property>
       </widget>
      </item>
@@ -71,7 +78,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>30</y>
+      <y>10</y>
       <width>191</width>
       <height>101</height>
      </rect>
@@ -145,22 +152,29 @@
     <addaction name="menuSalvar_como"/>
    </widget>
    <widget class="QMenu" name="menuEditar">
+    <property name="inputMethodHints">
+     <set>Qt::ImhDialableCharactersOnly|Qt::ImhDigitsOnly|Qt::ImhEmailCharactersOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly|Qt::ImhLowercaseOnly|Qt::ImhUppercaseOnly|Qt::ImhUrlCharactersOnly</set>
+    </property>
     <property name="title">
      <string>Configurações</string>
     </property>
-    <widget class="QMenu" name="menuCurva">
+    <widget class="QMenu" name="menu_curva">
+     <property name="inputMethodHints">
+      <set>Qt::ImhDialableCharactersOnly|Qt::ImhDigitsOnly|Qt::ImhEmailCharactersOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly|Qt::ImhLowercaseOnly|Qt::ImhUppercaseOnly|Qt::ImhUrlCharactersOnly</set>
+     </property>
      <property name="title">
       <string>Curva</string>
      </property>
-     <addaction name="actionIntervalo"/>
-     <addaction name="actionDura_o_2"/>
+     <addaction name="action5m"/>
+     <addaction name="action15m"/>
+     <addaction name="action30m"/>
+     <addaction name="action1h"/>
     </widget>
-    <addaction name="menuCurva"/>
+    <addaction name="menu_curva"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEditar"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNova_Curva">
    <property name="text">
     <string>Nova Curva</string>
@@ -191,19 +205,39 @@
     <string>.xls</string>
    </property>
   </action>
-  <action name="actionDura_o">
+  <action name="action5m">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Duração</string>
+    <string>5 min</string>
    </property>
   </action>
-  <action name="actionIntervalo">
+  <action name="action30m">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Intervalo</string>
+    <string>30 min</string>
    </property>
   </action>
-  <action name="actionDura_o_2">
+  <action name="action15m">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Duração</string>
+    <string>15 min</string>
+   </property>
+  </action>
+  <action name="action1h">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>1 hora</string>
    </property>
   </action>
  </widget>

@@ -3,6 +3,7 @@ import numpy as np
 
 class Calculator: 
      
+    
     def carga_consumo(self, carga_id: int):
         consumo = np.zeros((24))
         equipamentos = Service().consultar_equip_na_carga(carga_id)
@@ -33,7 +34,20 @@ class Calculator:
         intervalo_interp = np.linspace(0, 23, int(np.ceil(24/intervalo)))
         consumo_interp = np.interp(intervalo_interp, intervalo_horas, consumo)
         
-        return consumo_interp
+        return intervalo_interp, consumo_interp/1000
+
+    @classmethod
+    def simulate(cls, curva_id, curva_config):
+        
+        consumo = Calculator().curva_consumo(curva_id)
+        intervalo_config ={'5 min': 0.083,
+                           '15 min': 0.25,
+                           '30 min': 0.5,
+                           '1 hora': 1                          
+                        }
+        return Calculator().interpolador(consumo,
+                                         intervalo_config[curva_config])
+
         
    
 if __name__=='__main__':

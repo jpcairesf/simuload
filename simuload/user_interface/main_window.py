@@ -6,6 +6,8 @@ from simuload.user_interface.equipment_menu import EquipmentMenu
 from simuload.user_interface.equipment_window import EquipmentWindow
 from simuload.user_interface.load_menu import LoadMenu
 from simuload.user_interface.curve_window import CurveWindow
+from simuload.calculators.calculator import Calculator
+import matplotlib.pyplot as plt
 
 
 class MainWindow(QMainWindow):
@@ -29,7 +31,8 @@ class MainWindow(QMainWindow):
         self.ui.carga_menu.clicked.connect(self.load_menu)
         self.ui.actionNova_Curva.triggered.connect(self.new_curve)
         self.ui.editar_curva.clicked.connect(self.edit_curve)
-        
+        self.ui.simular_curva.clicked.connect(self.simulate_curve)
+    
     def equipment_menu(self):
 
         self.widget = EquipmentMenu(self)
@@ -60,8 +63,7 @@ class MainWindow(QMainWindow):
     def new_curve(self):
         self.widget = CurveWindow(self)
         self.widget.show()
-    
-    
+        
     def get_selected_curve(self):
         curve_label = self.ui.curvaList.selectedItems()
         if curve_label:
@@ -76,6 +78,26 @@ class MainWindow(QMainWindow):
             self.widget.set_input_info(curve)
             self.widget.show()
         except NameError:
-            pass
-
+            print("Por favor, selecione uma curva")
+    
+    def set_curve_config(self):
+        print(self.ui.intervaloGroup.checkedAction())
+              
+    def simulate_curve(self):
+        try:
+            curve_id = self.get_selected_curve()
+            x, y = Calculator().simulate(curve_id,
+                                         curva_config= self.ui.intervaloGroup.checkedAction().text())
+            self.show_curve(x, y)
+        except Exception as e:
+            print("Por favor, selecione uma curva", e)
+    
+    def show_curve(self, x, y):
+        plt.plot(x, y)
+        plt.title(self.ui.curvaList.selectedItems()[0].text())
+        plt.xlabel('Horas [h]')
+        plt.ylabel('Consumo [kWh/h]')
+        plt.fill_between(x, y, alpha=0.4)
+        plt.show()
+        
         

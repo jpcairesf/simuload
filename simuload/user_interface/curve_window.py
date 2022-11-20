@@ -22,7 +22,6 @@ class CurveWindow(QDialog):
             self.ui.buttonBox.accepted.connect(self.update_curve)
 
         else:
-            self.curve_id = self.service.last_id_curva_carga()
             self.ui.buttonBox.accepted.connect(self.create_curve)
 
         self.ui.buttonBox.rejected.connect(self.close)
@@ -51,7 +50,7 @@ class CurveWindow(QDialog):
     def create_curve(self):
 
         try:
-            self.service.inserir_curva(self.input_info())
+            self.curve_id = self.service.inserir_curva(self.input_info())
             self.add_load_in_curve()
             self.close()
         except Exception as e:

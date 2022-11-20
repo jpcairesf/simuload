@@ -227,7 +227,7 @@ class Model:
     def last_id_carga_equipamento(self):
         try:
             cursor = self.database.cur.execute(
-                "SELECT max(CargaEquipamentoId) FROM CargaEquipamento"
+                "SELECT max(CargaId) FROM CargaEquipamento"
             )
             return cursor.fetchone()[0]
         except Exception as e:
@@ -369,7 +369,7 @@ class Model:
     def last_id_curva_carga(self):
         try:
             cursor = self.database.cur.execute(
-                "SELECT max(CurvaCargaId) FROM CurvaCarga"
+                "SELECT max(CurvaId) FROM CurvaCarga"
             )
             return cursor.fetchone()[0]
         except Exception as e:

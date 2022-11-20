@@ -9,6 +9,8 @@ from simuload.user_interface.curve_window import CurveWindow
 from simuload.calculators.calculator import Calculator
 import matplotlib.pyplot as plt
 
+from simuload.utils.csv_exporter import csv_save_curve
+
 
 class MainWindow(QMainWindow):
     def __init__(self, service):
@@ -32,6 +34,8 @@ class MainWindow(QMainWindow):
         self.ui.actionNova_Curva.triggered.connect(self.new_curve)
         self.ui.editar_curva.clicked.connect(self.edit_curve)
         self.ui.simular_curva.clicked.connect(self.simulate_curve)
+        self.ui.excluir_curva.clicked.connect(self.remove_curve)
+        self.ui.actionSalvar_Curva.triggered.connect(self.export_curve)
     
     def equipment_menu(self):
 
@@ -79,7 +83,17 @@ class MainWindow(QMainWindow):
             self.widget.show()
         except NameError:
             print("Por favor, selecione uma curva")
-    
+            
+    def remove_curve(self):
+        try:
+            curve_id = self.get_selected_curve()
+            self.service.remover_curva(curve_id)
+            self.service.remover_carga_na_curva(curve_id)
+            self.get_curvas()
+        except Exception as e:
+            print(e)
+            
+        
     def set_curve_config(self):
         print(self.ui.intervaloGroup.checkedAction())
               
@@ -90,14 +104,27 @@ class MainWindow(QMainWindow):
                                          curva_config= self.ui.intervaloGroup.checkedAction().text())
             self.show_curve(x, y)
         except Exception as e:
-            print("Por favor, selecione uma curva", e)
+            print(e)
     
+    def get_curve_name(self):
+        return self.ui.curvaList.selectedItems()[0].text().split('-')[1]
+        
     def show_curve(self, x, y):
         plt.plot(x, y)
-        plt.title(self.ui.curvaList.selectedItems()[0].text())
+        plt.title(self.get_curve_name())
         plt.xlabel('Horas [h]')
         plt.ylabel('Consumo [kWh/h]')
         plt.fill_between(x, y, alpha=0.4)
         plt.show()
+    
+    def export_curve(self):
+        try:
+            curve_id = self.get_selected_curve()
+            horas, consumo = Calculator().simulate(curve_id,
+                                         curva_config= self.ui.intervaloGroup.checkedAction().text())
+
+            csv_save_curve(horas, consumo, self.get_curve_name())
+        except Exception as e:
+            print(e)
         
         

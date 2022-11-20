@@ -22,7 +22,6 @@ class LoadWindow(QDialog):
             self.ui.buttonBox.accepted.connect(self.update_load)
 
         else:
-            self.carga_id = self.service.last_id_carga_equipamento()
             self.ui.buttonBox.accepted.connect(self.create_load)
 
         self.ui.buttonBox.rejected.connect(self.close)
@@ -51,7 +50,7 @@ class LoadWindow(QDialog):
     def create_load(self):
 
         try:
-            self.service.inserir_carga(self.input_info())
+            self.carga_id = self.service.inserir_carga(self.input_info())
             self.add_equip_in_load()
             self.close()
         except Exception as e:

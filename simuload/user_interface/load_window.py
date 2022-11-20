@@ -22,7 +22,7 @@ class LoadWindow(QDialog):
             self.ui.buttonBox.accepted.connect(self.update_load)
 
         else:
-            self.carga_id = self.service.last_id_carga_equipamento("carga_equipamento")
+            self.carga_id = self.service.last_id_carga_equipamento()
             self.ui.buttonBox.accepted.connect(self.create_load)
 
         self.ui.buttonBox.rejected.connect(self.close)

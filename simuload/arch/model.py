@@ -320,9 +320,7 @@ class Model:
             """SELECT Cargas.CargaId, CargaNome, CargaQtd FROM CurvaCarga
             INNER JOIN Cargas
             ON CurvaCarga.CargaId = Cargas.CargaId
-            WHERE CurvaId=?;""",
-            (curva_id,),
-        ).fetchall()
+            WHERE CurvaId=?;""",(curva_id,)).fetchall()
     
     def inserir_carga_na_curva(self, curva_id, carga_id, qtd):
         """Adiciona uma nova linha na tabela.

@@ -80,7 +80,7 @@ class Service:
         self.model.inserir_curva(nome)
         
     def consultar_curva_pela_id(self, rowid):
-        self.model.consultar_curva_pela_id(rowid)
+        return self.model.consultar_curva_pela_id(rowid)
     
     def consultar_curva(self, consulta: str = ""):
         return self.model.consultar_curvas_registros_nome(consulta)
@@ -93,7 +93,7 @@ class Service:
         self.model.remover_curva(rowid)
     
     def consultar_curva_carga(self, curva_id):
-        self.model.consultar_curva_carga(curva_id)
+        return self.model.consultar_curva_carga(curva_id)
     
     def inserir_carga_na_curva(self, curva_id, carga_id, qtd):
         self.model.inserir_carga_na_curva(curva_id, carga_id, qtd)

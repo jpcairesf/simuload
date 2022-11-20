@@ -1,5 +1,7 @@
 from simuload.arch.model import Model
 from simuload.utils.parsers import input_type
+import numpy as np
+import re
 
 
 class Service:
@@ -23,8 +25,20 @@ class Service:
     def consultar_equipamentos(self, consulta: str = ""):
         return self.model.consultar_equipamentos_registros_nome(consulta)
 
-    def consultar_equipamento_id(self, equip_id: int):
-        return self.model.consultar_equipamento_pela_id(equip_id)
+    def consultar_equipamento_id(self, equip_id: int, structured=False):
+        
+        equip_info = self.model.consultar_equipamento_pela_id(equip_id)
+        
+        if structured:
+            equip_info = {"ID": equip_info[0],
+                          "Nome": equip_info[1],
+                          "Potencia": float(equip_info[2]),
+                          "FatorPotencia": float(equip_info[3]),
+                          "Uso": np.array(re.search(r"(?<=\[).+?(?=\])", equip_info[4]).group().split(),
+                                         dtype=float)
+                          }
+            
+        return equip_info
 
     def modificar_equipamento(self, equip_id, equipamento: dict):
 

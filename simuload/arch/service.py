@@ -1,4 +1,5 @@
 from simuload.arch.model import Model
+from simuload.utils.parsers import input_type
 
 
 class Service:
@@ -13,7 +14,7 @@ class Service:
         nome = equipamento["Nome"]
         potencia = equipamento["Potencia"]
         fator_potencia = equipamento["FatorPotencia"]
-        uso_diario = equipamento["Uso"]
+        uso_diario = input_type(equipamento["Uso"])
         self.model.inserir_equipamento((nome,
                                         potencia,
                                         fator_potencia,
@@ -30,7 +31,7 @@ class Service:
         nome = equipamento["Nome"]
         potencia = equipamento["Potencia"]
         fator_potencia = equipamento["FatorPotencia"]
-        uso_diario = equipamento["Uso"]
+        uso_diario = input_type(equipamento["Uso"])
         self.model.modificar_equipamento(
             equip_id, (nome, potencia, fator_potencia, uso_diario)
         )

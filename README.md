@@ -16,21 +16,21 @@ Executar o main no ambiente virtual
     (.venv)>> main.py
 ```
 ### Janela Principal
-![Janela Principal](docs\readme-imgs\janela-prinicpal.png)
+![Janela Principal](docs/readme-imgs/janela-prinicpal.png)
 
 ### Adicionando Equipamentos
-![Janelas Equipamentos](docs\readme-imgs\janela-equipamentos.png)
+![Janelas Equipamentos](docs/readme-imgs/janela-equipamentos.png)
 
 ### Criando Cargas
-![Janelas Cargas](docs\readme-imgs\janela-cargas.png)
+![Janelas Cargas](docs/readme-imgs/janela-cargas.png)
 
 ### Simulando Curvas
-![Janelas Config](docs\readme-imgs\janela-curvas-config.png)
-![Janelas Curva](docs\readme-imgs\janela-curvas.png)
+![Janelas Config](docs/readme-imgs/janela-curvas-config.png)
+![Janelas Curva](docs/readme-imgs/janela-curvas.png)
 
 
 ### Salvando os Resultados
-![Janela Resultado](docs\readme-imgs\janela-resultado.png)
+![Janela Resultado](docs/readme-imgs/janela-resultado.png)
 
 ## License
 

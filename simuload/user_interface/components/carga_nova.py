@@ -88,7 +88,7 @@ class Ui_NovaCarga(object):
         self.groupBox.setTitle(_translate("NovaCarga", "Carga"))
         self.label_5.setText(
             _translate(
-                "NovaCarga", "Conjunto de equipamentos que constituem um consumidor"
+                "NovaCarga", "Equipamentos que constituem a carga"
             )
         )
         self.carga_label.setText(_translate("NovaCarga", "Nome"))

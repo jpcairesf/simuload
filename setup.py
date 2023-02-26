@@ -9,5 +9,6 @@ setup(
         "PyQt5-tools",
         "numpy",
         "pytest",
+        "matplotlib"
     ],
 )

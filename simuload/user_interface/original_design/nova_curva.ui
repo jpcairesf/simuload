@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
+    <width>561</width>
     <height>373</height>
    </rect>
   </property>
@@ -16,11 +16,17 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>220</x>
      <y>330</y>
-     <width>341</width>
+     <width>331</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -33,10 +39,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+     <y>0</y>
      <width>541</width>
-     <height>81</height>
+     <height>91</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="title">
     <string>Curva</string>
@@ -44,7 +56,7 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>20</y>
       <width>361</width>
       <height>16</height>
@@ -58,21 +70,34 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>50</y>
       <width>521</width>
-      <height>31</height>
+      <height>33</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
      <item row="0" column="0">
       <widget class="QLabel" name="carga_label_2">
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Nome</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="curva_nome"/>
+      <widget class="QLineEdit" name="curva_nome">
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -81,10 +106,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>100</y>
+     <y>90</y>
      <width>541</width>
-     <height>221</height>
+     <height>231</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="title">
     <string>Adicionar Cargas</string>
@@ -95,12 +126,18 @@
       <x>10</x>
       <y>20</y>
       <width>521</width>
-      <height>181</height>
+      <height>201</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QListWidget" name="loadList"/>
+      <widget class="QListWidget" name="loadList">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -141,23 +178,16 @@
       </layout>
      </item>
      <item>
-      <widget class="QListWidget" name="addedLoadList"/>
+      <widget class="QListWidget" name="addedLoadList">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>310</y>
-     <width>541</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
   </widget>
  </widget>
  <resources/>

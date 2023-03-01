@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>282</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,17 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>50</x>
      <y>240</y>
      <width>341</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -33,10 +39,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+     <y>0</y>
      <width>381</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="title">
     <string>Equipamento</string>
@@ -44,9 +56,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>40</x>
       <y>20</y>
-      <width>361</width>
+      <width>331</width>
       <height>20</height>
      </rect>
     </property>
@@ -59,10 +71,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
+     <y>50</y>
      <width>381</width>
-     <height>161</height>
+     <height>181</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="title">
     <string>Parâmetros</string>
@@ -71,9 +89,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>40</y>
       <width>361</width>
-      <height>119</height>
+      <height>131</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_3">
@@ -85,7 +103,13 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="equip_nome"/>
+      <widget class="QLineEdit" name="equip_nome">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="pot_label">
@@ -95,7 +119,13 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="equip_potencia"/>
+      <widget class="QLineEdit" name="equip_potencia">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="fp_label">
@@ -105,7 +135,13 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="equip_fp"/>
+      <widget class="QLineEdit" name="equip_fp">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="uso_label">
@@ -115,7 +151,14 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="equip_uso"/>
+      <widget class="QLineEdit" name="equip_uso">
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

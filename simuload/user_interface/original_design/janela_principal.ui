@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>567</width>
-    <height>363</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,21 +18,60 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
-      <width>211</width>
-      <height>193</height>
+      <y>200</y>
+      <width>331</width>
+      <height>371</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="carga_menu">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Cargas</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="equipamento_menu">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Equipamentos</string>
        </property>
@@ -40,6 +79,18 @@
      </item>
      <item>
       <widget class="QPushButton" name="editar_curva">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Editar Curva</string>
        </property>
@@ -47,13 +98,53 @@
      </item>
      <item>
       <widget class="QPushButton" name="excluir_curva">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Excluir Curva</string>
        </property>
       </widget>
      </item>
      <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Maximum</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QPushButton" name="simular_curva">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Simular Curva</string>
        </property>
@@ -64,10 +155,10 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>10</y>
+      <x>350</x>
+      <y>-10</y>
       <width>20</width>
-      <height>291</height>
+      <height>591</height>
      </rect>
     </property>
     <property name="orientation">
@@ -78,9 +169,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
-      <width>191</width>
-      <height>101</height>
+      <y>20</y>
+      <width>311</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="text">
@@ -99,29 +190,36 @@
    <widget class="QLabel" name="titulo_curvas">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>20</y>
-      <width>241</width>
-      <height>21</height>
+      <x>380</x>
+      <y>0</y>
+      <width>411</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>9</pointsize>
+      <family>Reem Kufi</family>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Selecione uma curva de cargas</string>
+     <string>Selecione uma curva de carga:</string>
     </property>
    </widget>
    <widget class="QListWidget" name="curvaList">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>380</x>
       <y>50</y>
-      <width>301</width>
-      <height>261</height>
+      <width>411</width>
+      <height>521</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Reem Kufi</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
    </widget>
   </widget>
@@ -130,8 +228,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>567</width>
-     <height>26</height>
+     <width>800</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

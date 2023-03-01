@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>600</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,18 +18,31 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>381</width>
-     <height>281</height>
+     <width>581</width>
+     <height>481</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLineEdit" name="procuraCarga"/>
+       <widget class="QLineEdit" name="procuraCarga">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="procurarBotao">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Procurar</string>
         </property>
@@ -38,12 +51,31 @@
      </layout>
     </item>
     <item>
-     <widget class="QListWidget" name="cargaLista"/>
+     <widget class="QListWidget" name="cargaLista">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Reem Kufi</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="ExcluirCarga">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Excluir</string>
         </property>
@@ -54,6 +86,9 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
@@ -63,16 +98,28 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="NovaCarga">
+       <widget class="QPushButton" name="EditarCarga">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
-         <string>Criar Nova</string>
+         <string>Editar</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="EditarCarga">
+       <widget class="QPushButton" name="NovaCarga">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
-         <string>Editar</string>
+         <string>Criar Nova</string>
         </property>
        </widget>
       </item>

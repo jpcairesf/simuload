@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>428</width>
-    <height>300</height>
+    <width>600</width>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>16</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Gráfico da Curva</string>
@@ -18,19 +23,31 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>411</width>
-     <height>251</height>
+     <width>581</width>
+     <height>431</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>270</y>
-     <width>75</width>
-     <height>23</height>
+     <x>440</x>
+     <y>450</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Reem Kufi</family>
+     <pointsize>16</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Exportar</string>

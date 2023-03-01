@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>600</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,18 +18,31 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>381</width>
-     <height>281</height>
+     <width>581</width>
+     <height>481</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLineEdit" name="procuraEquip"/>
+       <widget class="QLineEdit" name="procuraEquip">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="procurarBotao">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Procurar</string>
         </property>
@@ -38,12 +51,25 @@
      </layout>
     </item>
     <item>
-     <widget class="QListWidget" name="equipamentoLista"/>
+     <widget class="QListWidget" name="equipamentoLista">
+      <property name="font">
+       <font>
+        <family>Reem Kufi</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="ExcluirEquipamento">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Excluir</string>
         </property>
@@ -53,6 +79,9 @@
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -64,6 +93,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="NovoEquipamento">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Criar Novo</string>
         </property>
@@ -71,6 +106,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="EditarEquipamento">
+        <property name="font">
+         <font>
+          <family>Reem Kufi</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Editar</string>
         </property>

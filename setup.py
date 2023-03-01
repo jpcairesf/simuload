@@ -11,4 +11,5 @@ setup(
         "pytest",
         "matplotlib"
     ],
+    py_modules=[]
 )

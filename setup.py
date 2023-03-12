@@ -9,7 +9,8 @@ setup(
         "PyQt5-tools",
         "numpy",
         "pytest",
-        "matplotlib"
+        "matplotlib",
+        "xlsxwriter"
     ],
     py_modules=[]
 )

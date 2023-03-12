@@ -28,7 +28,7 @@ class Calculator:
         # :param: intervalo - números de pontos na interpolação
         # Tal que num_pontos = np.ceil(24/intervalo)
         # Exemplo intervalo = 1 num_pontos = 24
-        # Exemplo intervalo = 0.25 (15 min) num_pontos = 48
+        # Exemplo intervalo = 0.25 (15 min) num_pontos = 96
         
         intervalo_horas = np.linspace(0, 23, 24)        
         intervalo_interp = np.linspace(0, 23, int(np.ceil(24/intervalo)))

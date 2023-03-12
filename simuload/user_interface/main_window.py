@@ -6,7 +6,7 @@ from simuload.user_interface.equipment_menu import EquipmentMenu
 from simuload.user_interface.equipment_window import EquipmentWindow
 from simuload.user_interface.load_menu import LoadMenu
 from simuload.user_interface.curve_window import CurveWindow
-from simuload.calculators.calculator import Calculator
+from simuload.processors.calculator import Calculator
 import matplotlib.pyplot as plt
 
 from simuload.utils.csv_exporter import csv_save_curve
@@ -111,6 +111,7 @@ class MainWindow(QMainWindow):
         
     def show_curve(self, x, y):
         plt.plot(x, y)
+        plt.grid()
         plt.title(self.get_curve_name())
         plt.xlabel('Horas [h]')
         plt.ylabel('Consumo [kWh/h]')

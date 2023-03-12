@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Exported files
-curvas/ Curva Total
+curvas/
 
 # Distribution / packaging
 .Python

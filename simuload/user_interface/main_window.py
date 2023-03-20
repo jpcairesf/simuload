@@ -31,11 +31,11 @@ class MainWindow(QMainWindow):
 
         self.ui.equipamento_menu.clicked.connect(self.equipment_menu)
         self.ui.carga_menu.clicked.connect(self.load_menu)
-        self.ui.actionNova_Curva.triggered.connect(self.new_curve)
+        self.ui.nova_curva.clicked.connect(self.new_curve)
         self.ui.editar_curva.clicked.connect(self.edit_curve)
         self.ui.simular_curva.clicked.connect(self.simulate_curve)
         self.ui.excluir_curva.clicked.connect(self.remove_curve)
-        self.ui.actionSalvar_Curva.triggered.connect(self.export_curve)
+        self.ui.exportar_curva.clicked.connect(self.export_curve)
     
     def equipment_menu(self):
 

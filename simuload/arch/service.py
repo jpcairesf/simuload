@@ -50,6 +50,15 @@ class Service:
             equip_id, (nome, potencia, fator_potencia, uso_diario)
         )
 
+    def modificar_transformador(self, transf_id, transformador: dict):
+
+        nome = transformador["Nome"]
+        potencia = transformador["Demanda"]
+        uso_diario = input_type(transformador["Fornecimento"])
+        self.model.modificar_transformador(
+            transf_id, (nome, potencia, uso_diario)
+        )
+
     def remover_equipamento(self, equip_id):
 
         self.model.remover_equipamento(equip_id)
@@ -73,6 +82,9 @@ class Service:
     def remover_carga(self, carga_id):
         self.model.remover_carga(carga_id)
 
+    def remover_transformador(self, carga_id):
+        self.model.remover_transformador(carga_id)
+
     def inserir_equip_na_carga(self, carga_id: int, equip_id: int, qtd: int):
         return self.model.inserir_equipamento_na_carga(carga_id, equip_id, qtd)
 
@@ -88,6 +100,9 @@ class Service:
         
     def consultar_curva_pela_id(self, rowid):
         return self.model.consultar_curva_pela_id(rowid)
+
+    def consultar_transformador_pela_id(self, rowid):
+        return self.model.consultar_tranformador_pela_id(rowid)
     
     def consultar_curva(self, consulta: str = ""):
         return self.model.consultar_curvas_registros_nome(consulta)

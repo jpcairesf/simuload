@@ -73,6 +73,13 @@ class MainWindow(QMainWindow):
         if curve_label:
             return int(curve_label[0].text().split(" - ")[0])
         raise NameError
+
+    #TODO: set transf label
+    def get_selected_transf(self):
+        transf_label = self.ui.transfList.selectedItems()
+        if transf_label:
+            return int(transf_label[0].text().split(" - ")[0])
+        raise NameError
     
     def edit_curve(self):
         try:
@@ -100,15 +107,18 @@ class MainWindow(QMainWindow):
     def simulate_curve(self):
         try:
             curve_id = self.get_selected_curve()
-            x, y = Calculator().simulate(curve_id,
+            transf_id = self.get_selected_transf()
+            x, y1, y2 = Calculator().simulate(curve_id,
+                                         transf_id,
                                          curva_config= self.ui.intervaloGroup.checkedAction().text())
-            self.show_curve(x, y)
+            self.show_curve(x, y1, y2)
         except Exception as e:
             print(e)
     
     def get_curve_name(self):
         return self.ui.curvaList.selectedItems()[0].text().split('-')[1]
         
+    #TODO: plotar duas curvas
     def show_curve(self, x, y):
         plt.plot(x, y)
         plt.grid()
@@ -118,6 +128,7 @@ class MainWindow(QMainWindow):
         plt.fill_between(x, y, alpha=0.4)
         plt.show()
     
+    #TODO: exportar as duas curvas
     def export_curve(self):
         try:
             curve_id = self.get_selected_curve()

@@ -77,7 +77,7 @@ class Model:
         :param transformador (tuple): Tupla contendo os dados.
         """
         sql = """
-        INSERT INTO Transformador (TransformadorNome, TransformadorDemanda,EquipamentoFP, TransformadorFornecimento)
+        INSERT INTO Transformador (TransformadorNome, TransformadorDemanda, TransformadorFornecimento)
         VALUES (?, ?, ?)"""
 
         try:

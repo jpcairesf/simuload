@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
         self.service = service
         self.set_connections()
         self.get_curvas()
+        self.get_transformadores()
         
     def set_connections(self):
         self.ui.transformador_menu.clicked.connect(self.transformer_menu)

@@ -40,6 +40,29 @@ class Service:
             
         return equip_info
 
+    def consultar_transformador_id(self, transf_id: int, structured=False):
+        
+        tranf_info = self.model.consultar_tranformador_pela_id(transf_id)
+        
+        if structured:
+            tranf_info = {"ID": tranf_info[0],
+                          "Nome": tranf_info[1],
+                          "Demanda": float(tranf_info[2]),
+                          "Fornecimento": np.array(re.search(r"(?<=\[).+?(?=\])", tranf_info[3]).group().split(),
+                                         dtype=float)
+                          }
+            
+        return tranf_info
+
+    def inserir_transformador(self, transformador: dict):
+
+        nome = transformador["Nome"]
+        demanda = transformador["Demanda"]
+        fornecimento = input_type(transformador["Fornecimento"])
+        return self.model.inserir_transformador((nome,
+                                        demanda,
+                                        fornecimento))
+
     def modificar_equipamento(self, equip_id, equipamento: dict):
 
         nome = equipamento["Nome"]

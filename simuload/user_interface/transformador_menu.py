@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 from simuload.user_interface.components.transformador_menu import Ui_MenuTransformador
+from simuload.user_interface.transformador_window import TransformadorWindow
 
 class TransformadorMenu(QWidget):
     def __init__(self, parent):
@@ -43,14 +44,13 @@ class TransformadorMenu(QWidget):
         self.get_transformadores()
 
     def create_transf(self):
-        # self.widget = TransformadorWindow(self)
-        # self.widget.show()
-        return None
+        self.widget = TransformadorWindow(self)
+        self.widget.show()
 
     def edit_transf(self):
         transf_id = self.get_selected_transf()
         transformador = self.service.consultar_transformador_id(transf_id)
 
-        # self.widget = TransformadorWindow(parent=self, edit=transf_id)
-        # self.widget.set_input_info(transformador)
-        # self.widget.show()
+        self.widget = TransformadorWindow(parent=self, edit=transf_id)
+        self.widget.set_input_info(transformador)
+        self.widget.show()

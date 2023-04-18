@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMainWindow
 from simuload.user_interface.components.janela_principal import Ui_MainWindow
 
 from simuload.user_interface.equipment_menu import EquipmentMenu
+from simuload.user_interface.transformador_menu import TransformadorMenu
 from simuload.user_interface.equipment_window import EquipmentWindow
 from simuload.user_interface.load_menu import LoadMenu
 from simuload.user_interface.curve_window import CurveWindow
@@ -28,7 +29,7 @@ class MainWindow(QMainWindow):
         self.get_curvas()
         
     def set_connections(self):
-
+        self.ui.transformador_menu.clicked.connect(self.transformer_menu)
         self.ui.equipamento_menu.clicked.connect(self.equipment_menu)
         self.ui.carga_menu.clicked.connect(self.load_menu)
         self.ui.nova_curva.clicked.connect(self.new_curve)
@@ -37,6 +38,10 @@ class MainWindow(QMainWindow):
         self.ui.excluir_curva.clicked.connect(self.remove_curve)
         self.ui.exportar_curva.clicked.connect(self.export_curve)
     
+    def transformer_menu(self):
+        self.widget = TransformadorMenu(self)
+        self.widget.show()
+
     def equipment_menu(self):
 
         self.widget = EquipmentMenu(self)
@@ -56,14 +61,24 @@ class MainWindow(QMainWindow):
     
     def get_curvas(self):
         self.curvas = self.service.consultar_curva(consulta="")
-        self.add_itens()
+        self.add_curvas()
     
-    def add_itens(self):
+    def add_curvas(self):
         self.ui.curvaList.clear()
         for curva in self.curvas:
             curva_label = str(curva[0]) + " - " + curva[1]
             self.ui.curvaList.insertItem(curva[0], curva_label)
             
+    def get_transformadores(self):
+        self.transformadores = self.service.consultar_transformador(consulta="")
+        self.add_transformadores()
+    
+    def add_transformadores(self):
+        self.ui.transfList.clear()
+        for transf in self.transformadores:
+            transf_label = str(transf[0]) + " - " + transf[1]
+            self.ui.transfList.insertItem(transf[0], transf_label)
+
     def new_curve(self):
         self.widget = CurveWindow(self)
         self.widget.show()
@@ -74,7 +89,6 @@ class MainWindow(QMainWindow):
             return int(curve_label[0].text().split(" - ")[0])
         raise NameError
 
-    #TODO: set transf label
     def get_selected_transf(self):
         transf_label = self.ui.transfList.selectedItems()
         if transf_label:

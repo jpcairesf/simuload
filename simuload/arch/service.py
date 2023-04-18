@@ -106,6 +106,9 @@ class Service:
     
     def consultar_curva(self, consulta: str = ""):
         return self.model.consultar_curvas_registros_nome(consulta)
+
+    def consultar_transformador(self, consulta: str = ""):
+        return self.model.consultar_transformadores_registros_nome(consulta)
     
     def modificar_curva(self, rowid, curva: dict):
         nome = curva["Nome"]

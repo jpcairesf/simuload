@@ -124,6 +124,17 @@ class Model:
             """SELECT * FROM Transformador WHERE rowid=?""", (rowid,)
         ).fetchone()
 
+    def consultar_transformadores_registros_nome(self, nome):
+        """Consulta todos os registros da tabela pelo nome.
+        :return: É retornada uma lista (list) de tuplas (tuple)
+        contendo os dados.
+        Se não houver dados é retornada uma lista vazia [``[]``].
+        """
+        return self.database.cur.execute(
+            """SELECT * FROM Transformador WHERE TransformadorNome LIKE ?""",
+            ("%" + nome + "%",),
+        ).fetchall()
+
     def remover_transformador(self, rowid):
         """Remove uma linha da tabela com base na id da linha.
         :param rowid (id): id da linha que se deseja remover.

@@ -123,34 +123,38 @@ class MainWindow(QMainWindow):
         try:
             curve_id = self.get_selected_curve()
             transf_id = self.get_selected_transf()
-            x, y1, y2 = Calculator().simulate(curve_id,
-                                         transf_id,
+            x1, y1 = Calculator().simulate_curva(curve_id,
                                          curva_config= self.ui.intervaloGroup.checkedAction().text())
-            self.show_curve(x, y1, y2)
+            x2, y2 = Calculator().simulate_transf(transf_id,
+                                         curva_config= self.ui.intervaloGroup.checkedAction().text())
+            self.show_curve(x1, y1, y2)
         except Exception as e:
             print(e)
     
     def get_curve_name(self):
-        return self.ui.curvaList.selectedItems()[0].text().split('-')[1]
+        return self.ui.curvaList.selectedItems()[0].text().split('-')[1] + " X " + self.ui.transfList.selectedItems()[0].text().split('-')[1]
         
-    #TODO: plotar duas curvas
-    def show_curve(self, x, y):
-        plt.plot(x, y)
+    def show_curve(self, x, y1, y2):
+        plt.plot(x, y1)
+        plt.plot(x, y2)
         plt.grid()
         plt.title(self.get_curve_name())
         plt.xlabel('Horas [h]')
-        plt.ylabel('Consumo [kWh/h]')
-        plt.fill_between(x, y, alpha=0.4)
+        plt.ylabel('Consumo/Fornecimento [kWh/h]')
+        plt.fill_between(x, y1, alpha=0.4)
         plt.show()
     
     #TODO: exportar as duas curvas
     def export_curve(self):
         try:
             curve_id = self.get_selected_curve()
-            horas, consumo = Calculator().simulate(curve_id,
+            transf_id = self.get_selected_transf()
+            horas, consumo = Calculator().simulate_curva(curve_id,
+                                         curva_config= self.ui.intervaloGroup.checkedAction().text())
+            horas1, fornecimento = Calculator().simulate_transf(transf_id,
                                          curva_config= self.ui.intervaloGroup.checkedAction().text())
 
-            csv_save_curve(horas, consumo, self.get_curve_name())
+            csv_save_curve(horas, consumo, fornecimento, self.get_curve_name())
         except Exception as e:
             print(e)
         

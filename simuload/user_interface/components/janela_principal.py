@@ -209,7 +209,12 @@ class Ui_MainWindow(object):
         self.menu_curva.addAction(self.action1h)
         self.menuEditar.addAction(self.menu_curva.menuAction())
         self.menubar.addAction(self.menuEditar.menuAction())
-
+        self.intervaloGroup = QtWidgets.QActionGroup(MainWindow)
+        self.intervaloGroup.setObjectName("editar_intervalo")
+        self.intervaloGroup.addAction(self.action5m)
+        self.intervaloGroup.addAction(self.action15m)
+        self.intervaloGroup.addAction(self.action30m)
+        self.intervaloGroup.addAction(self.action1h)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

@@ -40,8 +40,8 @@ class TransformadorMenu(QWidget):
 
     def delete_transf(self):
         transf_id = self.get_selected_transf()
-        self.service.remover_transformador(transf_id)
-        self.get_transformadores()
+        # self.service.remover_transformador(transf_id)
+        # self.get_transformadores()
 
     def create_transf(self):
         self.widget = TransformadorWindow(self)

@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>150</y>
+      <y>160</y>
       <width>331</width>
-      <height>420</height>
+      <height>401</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -91,6 +91,25 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="excluir_transformador">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Excluir Transformador</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="nova_curva">
        <property name="enabled">
         <bool>true</bool>
@@ -104,7 +123,7 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>23</height>
+         <height>0</height>
         </size>
        </property>
        <property name="font">
@@ -176,7 +195,7 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>23</height>
+         <height>0</height>
         </size>
        </property>
        <property name="font">
@@ -234,7 +253,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>-20</y>
+      <y>0</y>
       <width>311</width>
       <height>171</height>
      </rect>

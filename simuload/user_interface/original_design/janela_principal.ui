@@ -18,46 +18,12 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>200</y>
+      <y>150</y>
       <width>331</width>
-      <height>371</height>
+      <height>420</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="carga_menu">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>23</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Reem Kufi</family>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Cargas</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-      </widget>
-     </item>
      <item>
       <widget class="QPushButton" name="equipamento_menu">
        <property name="sizePolicy">
@@ -78,12 +44,59 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="carga_menu">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Cargas</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="transformador_menu">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Reem Kufi</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Transformadores</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="nova_curva">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -91,7 +104,7 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>23</height>
+         <height>0</height>
         </size>
        </property>
        <property name="font">
@@ -114,7 +127,7 @@
      <item>
       <widget class="QPushButton" name="editar_curva">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -155,7 +168,7 @@
         <bool>true</bool>
        </property>
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -163,7 +176,7 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>23</height>
+         <height>0</height>
         </size>
        </property>
        <property name="font">
@@ -221,7 +234,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
+      <y>-20</y>
       <width>311</width>
       <height>171</height>
      </rect>
@@ -264,7 +277,7 @@
       <x>380</x>
       <y>50</y>
       <width>411</width>
-      <height>521</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="font">
@@ -272,6 +285,41 @@
       <family>Reem Kufi</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="transfList">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>350</y>
+      <width>411</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Reem Kufi</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titulo_transf">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>300</y>
+      <width>411</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Reem Kufi</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Selecione um transformador:</string>
     </property>
    </widget>
   </widget>

@@ -40,6 +40,29 @@ class Service:
             
         return equip_info
 
+    def consultar_transformador_id(self, transf_id: int, structured=False):
+        
+        tranf_info = self.model.consultar_tranformador_pela_id(transf_id)
+        
+        if structured:
+            tranf_info = {"ID": tranf_info[0],
+                          "Nome": tranf_info[1],
+                          "Demanda": float(tranf_info[2]),
+                          "Fornecimento": np.array(re.search(r"(?<=\[).+?(?=\])", tranf_info[3]).group().split(),
+                                         dtype=float)
+                          }
+            
+        return tranf_info
+
+    def inserir_transformador(self, transformador: dict):
+
+        nome = transformador["Nome"]
+        demanda = transformador["Demanda"]
+        fornecimento = input_type(transformador["Fornecimento"])
+        return self.model.inserir_transformador((nome,
+                                        demanda,
+                                        fornecimento))
+
     def modificar_equipamento(self, equip_id, equipamento: dict):
 
         nome = equipamento["Nome"]
@@ -48,6 +71,15 @@ class Service:
         uso_diario = input_type(equipamento["Uso"])
         self.model.modificar_equipamento(
             equip_id, (nome, potencia, fator_potencia, uso_diario)
+        )
+
+    def modificar_transformador(self, transf_id, transformador: dict):
+
+        nome = transformador["Nome"]
+        potencia = transformador["Demanda"]
+        uso_diario = input_type(transformador["Fornecimento"])
+        self.model.modificar_transformador(
+            transf_id, (nome, potencia, uso_diario)
         )
 
     def remover_equipamento(self, equip_id):
@@ -73,6 +105,9 @@ class Service:
     def remover_carga(self, carga_id):
         self.model.remover_carga(carga_id)
 
+    def remover_transformador(self, carga_id):
+        self.model.remover_transformador(carga_id)
+
     def inserir_equip_na_carga(self, carga_id: int, equip_id: int, qtd: int):
         return self.model.inserir_equipamento_na_carga(carga_id, equip_id, qtd)
 
@@ -88,9 +123,15 @@ class Service:
         
     def consultar_curva_pela_id(self, rowid):
         return self.model.consultar_curva_pela_id(rowid)
+
+    def consultar_transformador_pela_id(self, rowid):
+        return self.model.consultar_tranformador_pela_id(rowid)
     
     def consultar_curva(self, consulta: str = ""):
         return self.model.consultar_curvas_registros_nome(consulta)
+
+    def consultar_transformador(self, consulta: str = ""):
+        return self.model.consultar_transformadores_registros_nome(consulta)
     
     def modificar_curva(self, rowid, curva: dict):
         nome = curva["Nome"]

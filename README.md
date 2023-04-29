@@ -35,13 +35,13 @@ O Simuload faz uso de quatro entidades.
 
 ### Janela Principal
 
-Simuload é uma plataforma na qual é possível utilizar os equipamentos e cargas pré-definidos no banco de dados ou customizar novas opções. Dentre os registros pré-definidos, estão os equipamentos mapeados pelo PPH 2019 do Procel. Na tela prinicpal é possível visualizar os comandos de criação de componentes ou simulações de curvas.
+Simuload é uma plataforma na qual é possível utilizar os equipamentos e cargas pré-definidos no banco de dados ou customizar novas opções. Dentre os registros pré-definidos, estão os equipamentos com uso diário mapeados pelo PPH 2019 do Procel e potência mapeadas pela norma SM04.14-01.001 12ª edição da Neoenergia. Na tela prinicpal é possível visualizar os comandos de criação de componentes ou simulações de curvas.
 
 
 ![Janela Principal](docs/readme-imgs/janela-prinicpal.png)
 
 ### Adicionando Equipamentos
-Adicionar, editar ou excluir um equipamento são tarefas possíveis no menu equipamentos.
+Adicionar, editar ou excluir um equipamento são tarefas possíveis no menu equipamentos. No campo Uso Diário, podemos definir a distribuição de uso em 24 horas do equipamento seguindo o padrão de números entre 0 e 1 nos colchetes. Exemplo: [1 1 1 1 1 1 1 1 1 1 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.2 0.2 0.2 0.2].
 
 
 ![Janelas Equipamentos](docs/readme-imgs/janela-equipamentos.png)
@@ -53,7 +53,7 @@ No menu cargas é possível juntar diversas configurações de equipamentos para
 ![Janelas Cargas](docs/readme-imgs/janela-cargas.png)
 
 ### Criando Transformadores
-No menu transformadores
+No menu transformadores é possível criar e configurar transformadores com a mesma estrutura de distribuição de 24 horas dos equipamentos no campo Demanda.
 
 ### Criando Curvas
 Na tela prinicpal é possível editar as configurações para a simulação da curva e criar curvas baseadas nas cargas existentes.

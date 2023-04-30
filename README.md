@@ -28,8 +28,8 @@ Executar o main no ambiente virtual
 ```
 ### Entidades
 O Simuload faz uso de quatro entidades.
-1. Equipamento: Representa os equipamentos que compõem uma carga.
-2. Carga: Representa um estabelecimento consumidor. Pode ser uma casa, um galpão, um mercado, iluminação pública, entre outros.
+1. Equipamento: Representa os equipamentos que compõem uma carga em Watts [W].
+2. Carga: Representa um estabelecimento consumidor em Watts [W]. Pode ser uma casa, um galpão, um mercado, iluminação pública, entre outros.
 3. Curva: Representa a distribuição temporal do consumo de várias cargas. Representa o consumo numa região atendida por um transformador.
 4. Transformador: Representa o fornecimento na curva característica de um transformador que atende uma região.
 
@@ -44,7 +44,7 @@ Simuload é uma plataforma na qual é possível utilizar os equipamentos e carga
 Adicionar, editar ou excluir um equipamento são tarefas possíveis no menu equipamentos. No campo Uso Diário, podemos definir a distribuição de uso em 24 horas do equipamento seguindo o padrão de números entre 0 e 1 nos colchetes. 
 Ex.: Uso Diário: [1 1 1 1 1 1 1 1 1 1 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.2 0.2 0.2 0.2].
 
-O campo potência deve ser inserido um valor numérico que pode ser decimal utilizando um ponto no lugar da vírgula.
+O campo potência [W] deve ser inserido um valor numérico que pode ser decimal utilizando um ponto no lugar da vírgula.
 O fator de potência também pode ser decimal mas deve variar entre 0 e 1.
 
 
@@ -52,7 +52,7 @@ O fator de potência também pode ser decimal mas deve variar entre 0 e 1.
 ![Novo Equipamento](docs/readme-imgs/novo-equipamento.png)
 
 ### Criando Cargas
-No menu cargas é possível juntar diversas configurações de equipamentos para construir a carga desejada. 
+No menu cargas é possível juntar diversas configurações de equipamentos para construir a carga desejada. Na tela de criação é possível adicionar equipamentos unitários (>) ou em lote (>>) selecionando o número desejado logo abaixo. Também é possível remover equipamentos selecionados à direita.
 
 
 ![Janela Cargas](docs/readme-imgs/janela-cargas.png)
@@ -62,24 +62,29 @@ No menu cargas é possível juntar diversas configurações de equipamentos para
 No menu transformadores é possível criar e configurar transformadores com a mesma estrutura de distribuição de 24 horas dos equipamentos no campo Fornecimento.
 Ex.: Fornecimento: [1 1 1 1 1 1 1 1 1 1 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.2 0.2 0.2 0.2].
 
+A demanda (potência do transformador) é representada em Volt-Ampère [VA].
+
 
 ![Janela Transformadores](docs/readme-imgs/janela-transformadores.png)
 ![Novo Transformador](docs/readme-imgs/nova-transformador.png)
 
 ### Criando Curvas
-Na tela prinicpal é possível editar as configurações para a simulação da curva e criar curvas baseadas nas cargas existentes.
+Na tela prinicpal é possível editar as configurações para a simulação da curva e criar curvas baseadas nas cargas existentes. Da mesma forma que a janela de novas cargas, as curvas utilizam a estrutura de adição individual (>) ou em lote (>>) das cargas, sendo possível escolher a quantidade do lote adicionado pela numeração abaixo.
 
 
 ![Janela Config](docs/readme-imgs/janela-curvas-config.png)
 ![Janela Curva](docs/readme-imgs/janela-curvas.png)
-![Nova Curva](docs/readme-imgs/nova-curvas.png)
+![Nova Curva](docs/readme-imgs/nova-curva.png)
+
+### Simulação e Exportação
+Na janela principal na opção "Configurações" acima, é possível escolher qual divisão em minutos será utilizada para a simulação e exportação de curvas e transformadores. 
+Importante: É necessário selecionar uma curva e um transformador para utliizar essas funcionalidades.
+Ao clicar em "Exportar curva", na mesma pasta do Simuload terá uma pasta curvas. Cada simulação cria uma pasta com o nome da curva e do transformador utilizados contendo um arquivo .CSV com os dados de simulação. O nome do arquivo contém a data e horário que foi exportado.
+Na simulação, a linha da curva é representada em azul e a do transformador em laranja. A simulação contém diversas opções utilitárias padrões do pacote Matplotlib, podendo mover a curva, dar zoom, voltar as visualizações, editar bordas e espaçamentos, configurar as características da curva e salvá-la como imagem. O eixo Y representa o Consumo/Fornecimento da curva e transformador em Kilowatt-hora [kWh] e o eixo X representa as horas [h].
 
 
-### Resultados
-Ao clicar em simular curva, uma janela com p gráfico da curva de carga é mostrado. É possível salvar a imagem do gráfico ou exportar um .CSV na janela principal.
+![Janela Simulação](docs/readme-imgs/janela-simulacao.png)
 
-
-![Janela Resultado](docs/readme-imgs/janela-resultado.png)
 
 ## License
 

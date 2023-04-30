@@ -72,7 +72,6 @@ A demanda (potência do transformador) é representada em Volt-Ampère [VA].
 Na tela prinicpal é possível editar as configurações para a simulação da curva e criar curvas baseadas nas cargas existentes. Da mesma forma que a janela de novas cargas, as curvas utilizam a estrutura de adição individual (>) ou em lote (>>) das cargas, sendo possível escolher a quantidade do lote adicionado pela numeração abaixo.
 
 
-![Janela Config](docs/readme-imgs/janela-curvas-config.png)
 ![Janela Curva](docs/readme-imgs/janela-curvas.png)
 ![Nova Curva](docs/readme-imgs/nova-curva.png)
 
@@ -82,7 +81,7 @@ Importante: É necessário selecionar uma curva e um transformador para utliizar
 Ao clicar em "Exportar curva", na mesma pasta do Simuload terá uma pasta curvas. Cada simulação cria uma pasta com o nome da curva e do transformador utilizados contendo um arquivo .CSV com os dados de simulação. O nome do arquivo contém a data e horário que foi exportado.
 Na simulação, a linha da curva é representada em azul e a do transformador em laranja. A simulação contém diversas opções utilitárias padrões do pacote Matplotlib, podendo mover a curva, dar zoom, voltar as visualizações, editar bordas e espaçamentos, configurar as características da curva e salvá-la como imagem. O eixo Y representa o Consumo/Fornecimento da curva e transformador em Kilowatt-hora [kWh] e o eixo X representa as horas [h].
 
-
+![Janela Config](docs/readme-imgs/janela-config.png)
 ![Janela Simulação](docs/readme-imgs/janela-simulacao.png)
 
 

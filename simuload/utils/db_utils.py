@@ -105,6 +105,17 @@ def criar_tabela_curva_carga(con):
     else:
         print("Error! cannot create the database connection.")
     
+def criar_tabela_transformador(con):
+    sql_create_transf_table = """CREATE TABLE IF NOT EXISTS Transformador (
+                                    TransformadorId INTEGER PRIMARY KEY,
+                                    TransformadorNome TEXT NOT NULL,
+                                    TransformadorDemanda REAL NOT NULL,
+                                    TransformadorFornecimento TEXT NOT NULL
+                                )"""
+    if con is not None:
+        create_table(con, sql_create_transf_table)
+    else:
+        print("Error! cannot create the database connection.")
 
 def setup_database(con):
     criar_tabela_equipamentos(con)
@@ -112,7 +123,7 @@ def setup_database(con):
     criar_tabela_carga_equipamento(con)
     criar_tabela_curvas(con)
     criar_tabela_curva_carga(con)
-
+    criar_tabela_transformador(con)
 
 if __name__ == "__main__":
     db_connect()

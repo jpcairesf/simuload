@@ -27,7 +27,6 @@ class TransformadorMenu(QWidget):
         transf = self.ui.procuraTransf.text()
         self.transformadores = self.service.consultar_transformador(transf)
         self.add_itens()
-        self.parent.get_transformadores()
 
     def add_itens(self):
         self.ui.transformadorLista.clear()
@@ -43,12 +42,11 @@ class TransformadorMenu(QWidget):
         transf_id = self.get_selected_transf()
         self.service.remover_transformador(transf_id)
         self.get_transformadores()
+        self.parent.get_transformadores()
 
     def create_transf(self):
         self.widget = TransformadorWindow(self)
         self.widget.show()
-        self.get_transformadores()
-
 
     def edit_transf(self):
         transf_id = self.get_selected_transf()
@@ -57,4 +55,3 @@ class TransformadorMenu(QWidget):
         self.widget = TransformadorWindow(parent=self, edit=transf_id)
         self.widget.set_input_info(transformador)
         self.widget.show()
-        self.get_transformadores()

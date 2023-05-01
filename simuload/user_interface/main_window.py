@@ -144,7 +144,6 @@ class MainWindow(QMainWindow):
         plt.fill_between(x, y1, alpha=0.4)
         plt.show()
     
-    #TODO: exportar as duas curvas
     def export_curve(self):
         try:
             curve_id = self.get_selected_curve()

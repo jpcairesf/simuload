@@ -2,7 +2,9 @@
 Simuload é um projeto para criação de um simulador de curvas de cargas elétricas em uma linha de distribuição.
 
 ## Instalação Executável
-Em breve
+Clique em download em: [LINK PARA DOWNLOAD](https://github.com/jpcairesf/simuload/blob/main/dist/Simuload.zip).
+
+Execute o arquivo Simuload para iniciar o programa. Não remova ou altere o local/configuração das pastas no diretório Simuload.
 
 ## Instalação Código Fonte
 ### Windows
@@ -20,12 +22,14 @@ Execute os seguintes comandos
     >> source .venv/bin/activate
     (.venv)>> pip install -e .
 ```
-
-## Uso
+### Execução
 Executar o main no ambiente virtual
 ```python
     (.venv)>> python main.py
 ```
+
+## Guia de Uso
+
 ### Entidades
 O Simuload faz uso de quatro entidades.
 1. Equipamento: Representa os equipamentos que compõem uma carga em Watts [W].
@@ -75,16 +79,14 @@ Na tela prinicpal é possível editar as configurações para a simulação da c
 ![Janela Curva](docs/readme-imgs/janela-curvas.png)
 ![Nova Curva](docs/readme-imgs/nova-curva.png)
 
-### Simulação e Exportação
+## Simulação e Exportação
 Na janela principal na opção "Configurações" acima, é possível escolher qual divisão em minutos será utilizada para a simulação e exportação de curvas e transformadores. 
-Importante: É necessário selecionar uma curva e um transformador para utliizar essas funcionalidades.
-Ao clicar em "Exportar curva", na mesma pasta do Simuload terá uma pasta curvas. Cada simulação cria uma pasta com o nome da curva e do transformador utilizados contendo um arquivo .CSV com os dados de simulação. O nome do arquivo contém a data e horário que foi exportado.
+Importante: É necessário selecionar uma curva e um transformador para utilizar essas funcionalidades. Caso a simulação ou exportação não funcione mesmo com ambos selecionados, provavelmente algum Uso Diário de equipamento ou Fornecimento de transformador foi escrito no formato errado.
+
+### Exportação
+Ao clicar em "Exportar Curva", na mesma pasta do Simuload terá uma pasta curvas. Cada simulação cria uma pasta com o nome da curva e do transformador utilizados contendo um arquivo .CSV com os dados de simulação. O nome do arquivo contém a data e horário que foi exportado.
+
+### Simulação
 Na simulação, a linha da curva é representada em azul e a do transformador em laranja. A simulação contém diversas opções utilitárias padrões do pacote Matplotlib, podendo mover a curva, dar zoom, voltar as visualizações, editar bordas e espaçamentos, configurar as características da curva e salvá-la como imagem. O eixo Y representa o Consumo/Fornecimento da curva e transformador em Kilowatt-hora [kWh] e o eixo X representa as horas [h].
 
-![Janela Config](docs/readme-imgs/janela-config.png)
 ![Janela Simulação](docs/readme-imgs/janela-simulacao.png)
-
-
-## License
-
-[MIT](https://github.com/caleo-hub/simuload/blob/main/LICENSE)

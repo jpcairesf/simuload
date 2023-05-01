@@ -66,7 +66,7 @@ A demanda (potência do transformador) é representada em Volt-Ampère [VA].
 
 
 ![Janela Transformadores](docs/readme-imgs/janela-transformadores.png)
-![Novo Transformador](docs/readme-imgs/nova-transformador.png)
+![Novo Transformador](docs/readme-imgs/novo-transformador.png)
 
 ### Criando Curvas
 Na tela prinicpal é possível editar as configurações para a simulação da curva e criar curvas baseadas nas cargas existentes. Da mesma forma que a janela de novas cargas, as curvas utilizam a estrutura de adição individual (>) ou em lote (>>) das cargas, sendo possível escolher a quantidade do lote adicionado pela numeração abaixo.

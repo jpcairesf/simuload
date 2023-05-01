@@ -2,7 +2,7 @@
 Simuload é um projeto para criação de um simulador de curvas de cargas elétricas em uma linha de distribuição.
 
 ## Instalação Executável
-Clique em download em: [LINK PARA DOWNLOAD](https://github.com/jpcairesf/simuload/blob/main/dist/Simuload.zip).
+Clique no botão Download à direita da página no seguinte link: [LINK PARA DOWNLOAD](https://github.com/jpcairesf/simuload/blob/main/dist/Simuload.zip).
 
 ![Download](docs/readme-imgs/download.png)
 
@@ -31,6 +31,9 @@ Executar o main no ambiente virtual
 ```
 
 ## Guia de Uso
+O Simuload contém em seu banco de dados registros de transformadores com uma curva de exemplo que está próxima da curva característica de dois dos transformadores. 
+
+Para adptar às suas condições, leia atentamente o guia de uso abaixo e configure equipamentos, cargas e curvas para atender às exigências da atividade quanto à conformidade da curva com o transformador. Exporte a curva num arquivo .CSV editável em softwares de planilha como Microsoft Excel ou Google Sheets para uma avaliação mais rigorosa dos resultados.
 
 ### Entidades
 O Simuload faz uso de quatro entidades.

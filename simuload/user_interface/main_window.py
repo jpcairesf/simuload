@@ -114,6 +114,14 @@ class MainWindow(QMainWindow):
             self.get_curvas()
         except Exception as e:
             print(e)
+
+    def remove_transf(self):
+        try:
+            transf_id = self.get_selected_transf()
+            self.service.remover_transformador(transf_id)
+            self.get_transformadores()
+        except Exception as e:
+            print(e)
             
         
     def set_curve_config(self):
@@ -144,7 +152,6 @@ class MainWindow(QMainWindow):
         plt.fill_between(x, y1, alpha=0.4)
         plt.show()
     
-    #TODO: exportar as duas curvas
     def export_curve(self):
         try:
             curve_id = self.get_selected_curve()

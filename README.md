@@ -2,7 +2,8 @@
 Simuload é um projeto para criação de um simulador de curvas de cargas elétricas em uma linha de distribuição.
 
 ## Instalação Executável
-Clique em download em: [LINK PARA DOWNLOAD](https://github.com/jpcairesf/simuload/blob/main/dist/Simuload.zip)
+Clique em download em: [LINK PARA DOWNLOAD](https://github.com/jpcairesf/simuload/blob/main/dist/Simuload.zip).
+
 Execute o arquivo Simuload para iniciar o programa. Não remova ou altere o local/configuração das pastas no diretório Simuload.
 
 ## Instalação Código Fonte

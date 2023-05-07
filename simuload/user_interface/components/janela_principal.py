@@ -135,7 +135,7 @@ class Ui_MainWindow(object):
         self.logo = QtWidgets.QLabel(self.centralwidget)
         self.logo.setGeometry(QtCore.QRect(20, -20, 311, 171))
         self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap(u"simuload/img/simuload-logo.png"))
+        self.logo.setPixmap(QtGui.QPixmap(u"img/simuload-logo.png"))
         self.logo.setScaledContents(True)
         self.logo.setWordWrap(False)
         self.logo.setObjectName("logo")

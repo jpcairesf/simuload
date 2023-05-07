@@ -10,7 +10,7 @@ from simuload.user_interface.curve_window import CurveWindow
 from simuload.processors.calculator import Calculator
 import matplotlib.pyplot as plt
 
-from simuload.utils.csv_exporter import csv_save_curve
+from simuload.utils.csv_exporter import csv_save_curve, csv_save_single_curve
 
 
 class MainWindow(QMainWindow):
@@ -91,6 +91,8 @@ class MainWindow(QMainWindow):
         raise NameError
 
     def get_selected_transf(self):
+        if not self.ui.transfList.selectedItems():
+            return None
         transf_label = self.ui.transfList.selectedItems()
         if transf_label:
             return int(transf_label[0].text().split(" - ")[0])
@@ -133,9 +135,12 @@ class MainWindow(QMainWindow):
             transf_id = self.get_selected_transf()
             x1, y1 = Calculator().simulate_curva(curve_id,
                                          curva_config= self.ui.intervaloGroup.checkedAction().text())
-            x2, y2 = Calculator().simulate_transf(transf_id,
-                                         curva_config= self.ui.intervaloGroup.checkedAction().text())
-            self.show_curve(x1, y1, y2)
+            if transf_id is None:
+                self.show_single_curve(x1, y1)
+            else:
+                x2, y2 = Calculator().simulate_transf(transf_id,
+                                            curva_config= self.ui.intervaloGroup.checkedAction().text())
+                self.show_curve(x1, y1, y2)
         except Exception as e:
             print(e)
     
@@ -151,6 +156,15 @@ class MainWindow(QMainWindow):
         plt.ylabel('Consumo/Fornecimento [kWh/h]')
         plt.fill_between(x, y1, alpha=0.4)
         plt.show()
+
+    def show_single_curve(self, x, y1):
+        plt.plot(x, y1)
+        plt.grid()
+        plt.title(self.ui.curvaList.selectedItems()[0].text().split('-')[1])
+        plt.xlabel('Horas [h]')
+        plt.ylabel('Consumo/Fornecimento [kWh/h]')
+        plt.fill_between(x, y1, alpha=0.4)
+        plt.show()
     
     def export_curve(self):
         try:
@@ -158,10 +172,13 @@ class MainWindow(QMainWindow):
             transf_id = self.get_selected_transf()
             horas, consumo = Calculator().simulate_curva(curve_id,
                                          curva_config= self.ui.intervaloGroup.checkedAction().text())
-            horas1, fornecimento = Calculator().simulate_transf(transf_id,
-                                         curva_config= self.ui.intervaloGroup.checkedAction().text())
+            if transf_id is None:
+                csv_save_single_curve(horas, consumo, self.ui.curvaList.selectedItems()[0].text().split('-')[1])
+            else:
+                horas1, fornecimento = Calculator().simulate_transf(transf_id,
+                                            curva_config= self.ui.intervaloGroup.checkedAction().text())
 
-            csv_save_curve(horas, consumo, fornecimento, self.get_curve_name())
+                csv_save_curve(horas, consumo, fornecimento, self.get_curve_name())
         except Exception as e:
             print(e)
         

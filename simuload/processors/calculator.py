@@ -57,25 +57,43 @@ class Calculator:
         # consumo_curva_interp = np.interp(intervalo_interp, intervalo_horas, consumo_curva)
         consumo_curva_interp = [None] * values
 
-        sum = int(values/24)
+        sub_intervalo = int(values/24)
         count = 0
-        np.random.seed(int(np.sum(consumo_curva)))        
+        seed = int(np.sum(consumo_curva))
+        percentual_var = 50
+
 
         while (count < values):
-            consumo_curva_interp[count] = consumo_curva[int(count/sum)]
-
-            val = consumo_curva_interp[count]
+            # valor no vetor de 24h é a média do sub intervalo
+            consumo_curva_interp[count] = consumo_curva[int(count/sub_intervalo)]
+            avg = consumo_curva_interp[count]
 
             if(values > 24):
-                i = 0
-                while i < sum:
-                    rgen = np.random.randint(0, 10)
-                    rinv = 10 - rgen
-                    consumo_curva_interp[count+i] = val*(1+rgen*0.01)
-                    consumo_curva_interp[count+i+1] = val*(1-rinv*0.01)
-                    i += 2
+                new_avg = 0
+                for i in range(sub_intervalo):
+                    # setar uma seed única e gerar um valor de 0% a 50%
+                    np.random.seed(seed + count + i)
+                    rgen = np.random.randint(0, percentual_var)
 
-            count += sum        
+                    # comutar o sinal do valor gerado rgen
+                    if (count + i) % 2 != 0:
+                        rgen = rgen*(-1)
+
+                    # soma o valor gerado e acumula uma nova média
+                    consumo_curva_interp[count+i] = avg*(1+rgen*0.01)
+                    new_avg += consumo_curva_interp[count+i]
+                    i+=1
+                # calcular fator do que falta para a média original
+                fator = avg/(new_avg/sub_intervalo)
+
+                # multiplicar todos os valores do sub intervalo pelo fator
+                for j in range(sub_intervalo):
+                    consumo_curva_interp[count+j] = consumo_curva_interp[count+j] * fator
+
+            # a iteração acontece pra cada sub intervalo entre uma hora e outra
+            count += sub_intervalo  
+
+        # retorna valor em kW                  
         return intervalo_interp, np.array(consumo_curva_interp)/1000
 
     @classmethod

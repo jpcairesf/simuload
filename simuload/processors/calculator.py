@@ -60,7 +60,9 @@ class Calculator:
         sub_intervalo = int(values/24)
         count = 0
         seed = int(np.sum(consumo_curva))
-        percentual_var = 50
+        # percentual_var + base_avg = 100; percentual_var <= 50
+        percentual_var = 40
+        base_avg = 100 - percentual_var
 
 
         while (count < values):
@@ -79,16 +81,37 @@ class Calculator:
                     if (count + i) % 2 != 0:
                         rgen = rgen*(-1)
 
-                    # soma o valor gerado e acumula uma nova média
-                    consumo_curva_interp[count+i] = avg*(1+rgen*0.01)
+                    # soma o valor gerado a partir de meia média e acumula uma nova média
+                    consumo_curva_interp[count+i] = avg*(base_avg+rgen)*0.01
                     new_avg += consumo_curva_interp[count+i]
                     i+=1
                 # calcular fator do que falta para a média original
-                fator = avg/(new_avg/sub_intervalo)
+                normalization = 100/base_avg
+                fator = avg/(normalization*new_avg/sub_intervalo)
 
                 # multiplicar todos os valores do sub intervalo pelo fator
-                for j in range(sub_intervalo):
-                    consumo_curva_interp[count+j] = consumo_curva_interp[count+j] * fator
+                j = 0
+                while (j < sub_intervalo):
+                    # se o valor exceder a média:
+                    # o ponto será igual à média e salvar o valor excedente 
+                    if (consumo_curva_interp[count+j] * fator) > avg:
+                        consumo_curva_interp[count+j] = avg
+                        exceed = consumo_curva_interp[count+j] * fator - avg
+
+                        # se ainda houver próximo valor, adicionar o excedente ao próximo
+                        # e contar duas iterações
+                        if (j + 1) < sub_intervalo:
+                            consumo_curva_interp[count+j+1] = consumo_curva_interp[count+j+1] * fator + exceed
+                            j += 2
+                        # se não, adicionar ao anterior e contar uma iteração só (fim do laço)
+                        else:
+                            consumo_curva_interp[count+j-1] = consumo_curva_interp[count+j-1] * fator + exceed
+                            j += 1
+
+                    # se não exceder a média, seguir a fórmula do fator
+                    else:
+                        consumo_curva_interp[count+j] = consumo_curva_interp[count+j] * fator
+                        j += 1
 
             # a iteração acontece pra cada sub intervalo entre uma hora e outra
             count += sub_intervalo  

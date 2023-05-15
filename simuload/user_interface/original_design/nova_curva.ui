@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Conjunto de cargas para simulação da curva</string>
+     <string>Criação de uma nova curva para simular</string>
     </property>
    </widget>
    <widget class="QWidget" name="formLayoutWidget_2">

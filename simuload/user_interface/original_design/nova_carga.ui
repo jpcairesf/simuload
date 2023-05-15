@@ -41,7 +41,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Conjunto de equipamentos que constituem um consumidor</string>
+     <string>Criação de uma nova carga</string>
     </property>
    </widget>
    <widget class="QWidget" name="formLayoutWidget">

@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Equipamento elétrico/iluminação de um ambiente</string>
+     <string>Criação de um equipamento</string>
     </property>
    </widget>
   </widget>
@@ -114,7 +114,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="pot_label">
        <property name="text">
-        <string>Potência </string>
+        <string>Potência [W]</string>
        </property>
       </widget>
      </item>
@@ -146,7 +146,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="uso_label">
        <property name="text">
-        <string>Uso Diário</string>
+        <string>Curva de Carga Horária</string>
        </property>
       </widget>
      </item>

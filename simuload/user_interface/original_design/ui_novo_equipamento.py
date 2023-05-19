@@ -94,9 +94,9 @@ class Ui_NovoEquipamento(object):
         _translate = QtCore.QCoreApplication.translate
         NovoEquipamento.setWindowTitle(_translate("NovoEquipamento", "Novo Equipamento"))
         self.descEquip.setTitle(_translate("NovoEquipamento", "Equipamento"))
-        self.label.setText(_translate("NovoEquipamento", "Equipamento elétrico/iluminação de um ambiente"))
+        self.label.setText(_translate("NovoEquipamento", "Criação de um equipamento"))
         self.groupBox.setTitle(_translate("NovoEquipamento", "Parâmetros"))
         self.nome_label.setText(_translate("NovoEquipamento", "Nome"))
-        self.pot_label.setText(_translate("NovoEquipamento", "Potência "))
+        self.pot_label.setText(_translate("NovoEquipamento", "Potência [W]"))
         self.fp_label.setText(_translate("NovoEquipamento", "Fator de Potência"))
-        self.uso_label.setText(_translate("NovoEquipamento", "Uso Diário"))
+        self.uso_label.setText(_translate("NovoEquipamento", "Curva de Carga Horária"))

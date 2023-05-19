@@ -100,8 +100,8 @@ class Ui_NovoTransformador(object):
         _translate = QtCore.QCoreApplication.translate
         NovoTransformador.setWindowTitle(_translate("NovoTransformador", "Novo Transformador"))
         self.descTransf.setTitle(_translate("NovoTransformador", "Transformador"))
-        self.label.setText(_translate("NovoTransformador", "Transformador com demanda e fornecimento por hora"))
+        self.label.setText(_translate("NovoTransformador", "Criação de um transformador"))
         self.groupBox.setTitle(_translate("NovoTransformador", "Parâmetros"))
         self.nome_label.setText(_translate("NovoTransformador", "Nome"))
-        self.demanda_label.setText(_translate("NovoTransformador", "Demanda"))
-        self.fornecimento_label.setText(_translate("NovoTransformador", "Fornecimento"))
+        self.demanda_label.setText(_translate("NovoTransformador", "Potência Nominal [VA]"))
+        self.fornecimento_label.setText(_translate("NovoTransformador", "Curva de Carga Horária"))

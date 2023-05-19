@@ -107,7 +107,7 @@ class Ui_NovaCurva(object):
         _translate = QtCore.QCoreApplication.translate
         NovaCurva.setWindowTitle(_translate("NovaCurva", "Adicionar Curva"))
         self.groupBox_3.setTitle(_translate("NovaCurva", "Curva"))
-        self.label_6.setText(_translate("NovaCurva", "Conjunto de cargas para simulação da curva"))
+        self.label_6.setText(_translate("NovaCurva", "Criação de uma nova curva para simular"))
         self.carga_label_2.setText(_translate("NovaCurva", "Nome"))
         self.groupBox_2.setTitle(_translate("NovaCurva", "Adicionar Cargas"))
         self.addOne.setText(_translate("NovaCurva", ">"))

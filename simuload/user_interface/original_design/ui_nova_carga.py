@@ -103,7 +103,7 @@ class Ui_NovaCarga(object):
         _translate = QtCore.QCoreApplication.translate
         NovaCarga.setWindowTitle(_translate("NovaCarga", "Carga"))
         self.groupBox.setTitle(_translate("NovaCarga", "Carga"))
-        self.label_5.setText(_translate("NovaCarga", "Conjunto de equipamentos que constituem um consumidor"))
+        self.label_5.setText(_translate("NovaCarga", "Criação de uma nova carga"))
         self.carga_label.setText(_translate("NovaCarga", "Nome"))
         self.groupBox_2.setTitle(_translate("NovaCarga", "Adicionar Equipamentos"))
         self.addOne.setText(_translate("NovaCarga", ">"))

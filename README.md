@@ -96,6 +96,10 @@ Importante: É necessário selecionar uma curva e um transformador para utilizar
 Ao clicar em "Exportar Curva", na mesma pasta do Simuload terá uma pasta curvas. Cada simulação cria uma pasta com o nome da curva e do transformador utilizados contendo um arquivo .CSV com os dados de simulação. O nome do arquivo contém a data e horário que foi exportado.
 
 ### Simulação
-Na simulação, a linha da curva é representada em azul e a do transformador em laranja. A simulação contém diversas opções utilitárias padrões do pacote Matplotlib, podendo mover a curva, dar zoom, voltar as visualizações, editar bordas e espaçamentos, configurar as características da curva e salvá-la como imagem. O eixo Y representa o Consumo/Fornecimento da curva e transformador em Kilowatt-hora [kWh] e o eixo X representa as horas [h].
+Na simulação, a linha da curva é representada em azul e a do transformador em laranja. A simulação contém diversas opções utilitárias padrões do pacote Matplotlib, podendo mover a curva, dar zoom, voltar as visualizações, editar bordas e espaçamentos, configurar as características da curva e salvá-la como imagem. O eixo Y representa o Consumo/Fornecimento da curva e transformador em Kilowatt-hora [kWh] e o eixo X representa as horas [h]. Além disso, é possível selecionar o intervalo de simulação desejado entre as opções de 1 hora, 30 minutos, 15 minutos e 5 minutos, sendo a simulação de 1 hora a padrão. Abaixo temos as simulações de 30, 15 e 5 minutos, respectivamente.
 
-![Janela Simulação](docs/readme-imgs/janela-simulacao.png)
+![Janela Simulação 30](docs/readme-imgs/simulacao-30min.png)
+
+![Janela Simulação 15](docs/readme-imgs/simulacao-15min.png)
+
+![Janela Simulação 5](docs/readme-imgs/simulacao-5min.png)

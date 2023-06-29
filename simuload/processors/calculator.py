@@ -48,19 +48,17 @@ class Calculator:
         return intervalo_interp, consumo_curva_interp/1000
 
     def interpolador_curva(self, consumo_curva, intervalo = 1):
-        # :param: intervalo - números de pontos na interpolação
-        # Tal que num_pontos = np.ceil(24/intervalo)
-        # Exemplo intervalo = 1 num_pontos = 24
-        # Exemplo intervalo = 0.25 (15 min) num_pontos = 96
         values = int(24 * (60/intervalo))
         intervalo_interp = np.linspace(0, 23, values)
-        # consumo_curva_interp = np.interp(intervalo_interp, intervalo_horas, consumo_curva)
+        
+        # cria um vetor vazio com a quantidade de valores e define o subintervalo
+        # subintervalo por ser de 5, 15 ou 30 minutos
         consumo_curva_interp = [None] * values
-
         sub_intervalo = int(values/24)
         count = 0
+        
+        # fixa uma seed para que o resultado seja o mesmo em todas as simulações
         seed = int(np.sum(consumo_curva))
-        # percentual_var + base_avg = 100; percentual_var <= 50
         percentual_var = 40
         base_avg = 100 - percentual_var
 
@@ -73,7 +71,7 @@ class Calculator:
             if(values > 24):
                 new_avg = 0
                 for i in range(sub_intervalo):
-                    # setar uma seed única e gerar um valor de 0% a 50%
+                    # setar uma seed única e gerar um valor de 0% a 40%
                     np.random.seed(seed + count + i)
                     rgen = np.random.randint(0, percentual_var)
 
@@ -85,6 +83,7 @@ class Calculator:
                     consumo_curva_interp[count+i] = avg*(base_avg+rgen)*0.01
                     new_avg += consumo_curva_interp[count+i]
                     i+=1
+                    
                 # calcular fator do que falta para a média original
                 normalization = 100/base_avg
                 fator = avg/(normalization*new_avg/sub_intervalo)
@@ -103,6 +102,7 @@ class Calculator:
                         if (j + 1) < sub_intervalo:
                             consumo_curva_interp[count+j+1] = consumo_curva_interp[count+j+1] * fator + exceed
                             j += 2
+                            
                         # se não, adicionar ao anterior e contar uma iteração só (fim do laço)
                         else:
                             consumo_curva_interp[count+j-1] = consumo_curva_interp[count+j-1] * fator + exceed
